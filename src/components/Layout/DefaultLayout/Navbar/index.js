@@ -1,11 +1,18 @@
+import * as React from "react";
 import { AppBar, Tabs, Tab, Toolbar, Typography, Button } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import fourmanLogo from "../../assets/images/logo.png";
+import fourmanLogo from "../../../../assets/images/logo.png";
 import styles from "./Navbar.module.scss";
 
 function Navbar(props) {
+  const [value, setValue] = React.useState("1");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div>
       <AppBar className={styles.header} sx={{ background: "#fff" }}>
@@ -13,7 +20,12 @@ function Navbar(props) {
           <div className={styles.navbarLogo}>
             <img src={fourmanLogo} />
           </div>
-          <Tabs className={styles.navbarList} value="1">
+          <Tabs
+            className={styles.navbarList}
+            value={value}
+            onChange={handleChange}
+            indicatorColor="inherit"
+          >
             <Tab className={styles.dropdown} label="HÀNG MỚI" value="1" />
             <Tab className={styles.dropdown} label="ÁO NAM" value="2" />
             <Tab className={styles.dropdown} label="QUẦN NAM" value="3" />

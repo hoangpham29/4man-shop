@@ -1,5 +1,5 @@
 import styles from "./Banner.module.scss";
-import url from "../../assets/images/banner.jpg";
+import url from "../../../../assets/images/banner.jpg";
 function Banner() {
   return (
     <div>
