@@ -9,9 +9,7 @@ import styles from "./Navbar.module.scss";
 const Navbar = (props) => {
     const [value, setValue] = React.useState("1");
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+    const handleChange = (event, newValue) => setValue(newValue);
 
     return (
         <div>

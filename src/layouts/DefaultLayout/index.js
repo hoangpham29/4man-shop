@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Banner from "../components/Banner";
 import Content from "../components/Content";
-import styles from "./DefaultLayout.module.scss";
+import NewProduct from "../components/NewProduct";
 
 const DefaultLayout = () => {
     return (
@@ -9,6 +9,7 @@ const DefaultLayout = () => {
             <Navbar />
             <Banner />
             <Content />
+            <NewProduct />
         </div>
     );
 };
