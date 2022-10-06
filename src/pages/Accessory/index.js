@@ -1,5 +1,5 @@
-function Accessory() {
-  return <div>phu kien</div>;
-}
+const Accessory = () => {
+    return <div>phu kien</div>;
+};
 
 export default Accessory;

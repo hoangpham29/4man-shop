@@ -1,5 +1,5 @@
-function ManShirts() {
-  return <div>ao nam</div>;
-}
+const ManShirts = () => {
+    return <div>ao nam</div>;
+};
 
 export default ManShirts;
