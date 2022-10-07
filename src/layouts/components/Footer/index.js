@@ -6,7 +6,21 @@ import LogoFooter from "../../../components/LogoFooter";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import styles from "./Footer.module.scss";
 
-// const gray = gray[500];
+const ITEMS = [
+    { name: "Giới thiệu", path: "" },
+    { name: "Liên hệ", path: "" },
+    { name: "Tuyển dụng", path: "" },
+    { name: "Tin tức", path: "" },
+];
+const LISTSUPPORTS = [
+    { name: "Hướng dẫn chọn size", path: "" },
+    { name: "Câu hỏi thường gặp", path: "" },
+    { name: "Chính sách khách VIP", path: "" },
+    { name: "Thanh toán - Giao hàng", path: "" },
+    { name: "Chính sách đổi hàng", path: "" },
+    { name: "Chính sách bảo mật", path: "" },
+    { name: "Chính sách cookie", path: "" },
+];
 
 const Footer = () => {
     return (
@@ -21,30 +35,19 @@ const Footer = () => {
                     <Grid container spacing={5}>
                         <Grid item xs={12} sm={4}>
                             <LogoFooter />
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Giới thiệu
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Liên hệ
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Tuyển dụng
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Tin tức
-                                </Link>
-                            </Box>
+                            {ITEMS.map((item, index) => {
+                                return (
+                                    <Box key={index}>
+                                        <Link
+                                            className={styles.text_color}
+                                            href="/"
+                                        >
+                                            <KeyboardDoubleArrowRightIcon />
+                                            {item.name}
+                                        </Link>
+                                    </Box>
+                                );
+                            })}
                         </Grid>
 
                         <Grid item xs={12} sm={4}>
@@ -54,54 +57,19 @@ const Footer = () => {
                             >
                                 HỖ TRỢ KHÁCH HÀNG
                             </Box>
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Hướng dẫn đặt hàng
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Hướng dẫn chọn size
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Câu hỏi thường gặp
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Chính sách khách VIP
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Thanh toán - Giao hàng
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Chính sách đổi hàng
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Chính sách bảo mật
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link className={styles.text_color} href="/">
-                                    <KeyboardDoubleArrowRightIcon />
-                                    Chính sách cookie
-                                </Link>
-                            </Box>
+                            {LISTSUPPORTS.map((listsp, index) => {
+                                return (
+                                    <Box key={index}>
+                                        <Link
+                                            className={styles.text_color}
+                                            href="/"
+                                        >
+                                            <KeyboardDoubleArrowRightIcon />
+                                            {listsp.name}
+                                        </Link>
+                                    </Box>
+                                );
+                            })}
                         </Grid>
                     </Grid>
 
