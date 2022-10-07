@@ -1,0 +1,23 @@
+.text_color {
+    color: rgb(185, 182, 182);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.text_color:hover {
+    color: rgb(161, 39, 39);
+}
+
+.title_footer {
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.info_footer {
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid rgb(160, 160, 160);
+    font-size: 13px;
+    font-weight: 100;
+}

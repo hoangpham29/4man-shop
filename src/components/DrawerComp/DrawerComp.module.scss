@@ -1,0 +1,26 @@
+.navIcon {
+    position: relative;
+}
+
+.navIcon .btnIcon {
+    background-color: #ededed;
+    color: #a04242;
+    border-radius: 5px;
+    margin: 0px 0px 0px 5px;
+    width: 32px;
+    height: 32px;
+}
+
+.navIcon .btnIcon .icon {
+    font-size: 13px;
+}
+
+.navIcon .btnIcon:hover {
+    border: #a04242 solid 1px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

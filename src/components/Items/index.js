@@ -19,7 +19,7 @@ const Item = () => {
     return (
         <div className={styles.wrapper}>
             {items.map((item) => (
-                <div key={item.id}>
+                <div key={item.id} className={styles.wrap_product}>
                     <div className={styles.container}>
                         <img
                             className={styles.img_product}
@@ -31,11 +31,7 @@ const Item = () => {
                         </div>
                     </div>
                     <div className={styles.parent_avt_product}>
-                        <img
-                            className={styles.avt_product}
-                            src={item.image}
-                            // width={50}
-                        />
+                        <img className={styles.avt_product} src={item.image} />
                     </div>
                     <div>
                         <div className={styles.name_product}>{item.name} </div>
