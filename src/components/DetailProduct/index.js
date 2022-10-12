@@ -10,15 +10,14 @@ import styles from "./DetailProduct.module.scss";
 const DetailProduct = () => {
     const { id } = useParams();
     const [item, setItem] = useState([]);
+
+    const getProduct = async (id) => {
+        const { data } = await request.get("/hotclothes/" + id);
+        setItem(data);
+    };
+
     useEffect(() => {
-        request
-            .get("/hotclothes/" + id)
-            .then((res) => {
-                setItem(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        getProduct(id);
     }, [id]);
 
     return (
@@ -68,11 +67,16 @@ const DetailProduct = () => {
                     </div>
                     <div>
                         <div>
-                            <div>
-                                <span>SIZE*</span>{" "}
-                                <a href="https://4menshop.com/giay-the-thao/giay-chelsea-boots-all-black-g018-mau-den-17174.html#Modal-Help-Size">
+                            <div className={styles.tilte_size}>
+                                <span className={styles.name_title_size}>
+                                    SIZE*
+                                </span>{" "}
+                                <div
+                                    data-toggle="modal"
+                                    className={styles.link_size}
+                                >
                                     Hướng dẫn chọn size
-                                </a>
+                                </div>
                             </div>
                             <Box sx={{ maxWidth: "50%" }}>
                                 <FormControl fullWidth>
