@@ -1,6 +1,8 @@
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import request from "../../utils/request";
+import routesConfig from "../../config/routes";
 import styles from "./Items.module.scss";
 
 const Item = () => {
@@ -26,9 +28,12 @@ const Item = () => {
                             src={item.image}
                             width={250}
                         />
-                        <div className={styles.add_cart}>
+                        <Link
+                            to={routesConfig.products + "/" + item.id}
+                            className={styles.add_cart}
+                        >
                             <AddShoppingCartIcon />
-                        </div>
+                        </Link>
                     </div>
                     <div className={styles.parent_avt_product}>
                         <img className={styles.avt_product} src={item.image} />

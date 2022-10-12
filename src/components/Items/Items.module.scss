@@ -52,6 +52,10 @@
     cursor: pointer;
     background-color: #fa2634;
 }
+.container:hover svg {
+    transform: rotate(360deg);
+    transition: transform 500ms ease;
+}
 
 .img_product {
     max-width: 270px;
