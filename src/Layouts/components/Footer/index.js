@@ -40,7 +40,7 @@ const Footer = () => {
                                     <Box key={index}>
                                         <Link
                                             className={styles.text_color}
-                                            href="/"
+                                            href={item.path}
                                         >
                                             <KeyboardDoubleArrowRightIcon />
                                             {item.name}
@@ -62,7 +62,7 @@ const Footer = () => {
                                     <Box key={index}>
                                         <Link
                                             className={styles.text_color}
-                                            href="/"
+                                            href={listsp.path}
                                         >
                                             <KeyboardDoubleArrowRightIcon />
                                             {listsp.name}

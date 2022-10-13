@@ -74,9 +74,7 @@ const Navbar = (props) => {
     const anchorRef = React.useRef();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const openPopper = (event) => {
-        setAnchorEl(anchorEl ? null : event.currentTarget);
-    };
+    const openPopper = (event) => setAnchorEl(anchorEl ? null : event.currentTarget);
 
     return (
         <div>
@@ -160,8 +158,7 @@ const Navbar = (props) => {
                                                     <StyledInputBase
                                                         placeholder="Search…"
                                                         inputProps={{
-                                                            "aria-label":
-                                                                "search",
+                                                            "aria-label": "search",
                                                         }}
                                                     />
                                                 </Search>
