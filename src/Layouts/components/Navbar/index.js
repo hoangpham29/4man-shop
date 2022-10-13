@@ -110,7 +110,6 @@ const Navbar = (props) => {
                                         <Link
                                             to={routesConfig.products}
                                             className={styles.dropdown}
-                                            value="1"
                                         >
                                             {page}
                                         </Link>
@@ -118,14 +117,16 @@ const Navbar = (props) => {
                                 ))}
                             </ul>
                             <div className={styles.navIcon}>
-                                <IconButton
-                                    className={styles.btnIcon}
-                                    size="large"
-                                    aria-label="ShoppingCartIcon"
-                                    color="secondary"
-                                >
-                                    <ShoppingCartIcon className={styles.icon} />
-                                </IconButton>
+                                <Link to={routesConfig.cart}>
+                                    <IconButton
+                                        className={styles.btnIcon}
+                                        size="large"
+                                        aria-label="ShoppingCartIcon"
+                                        color="secondary"
+                                    >
+                                        <ShoppingCartIcon className={styles.icon} />
+                                    </IconButton>
+                                </Link>
 
                                 <IconButton
                                     className={styles.btnIcon}
