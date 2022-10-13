@@ -4,6 +4,10 @@ import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
+import Button from "@mui/material/Button";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import Counter from "../Counter";
 import request from "../../utils/request";
 import styles from "./DetailProduct.module.scss";
 
@@ -65,20 +69,18 @@ const DetailProduct = () => {
                         <span className={styles.text_cost}>Giá bán: </span>
                         {item.cost} <span>₫</span>
                     </div>
-                    <div>
-                        <div>
+                    <div className={styles.option_product}>
+                        <div className={styles.option_size}>
                             <div className={styles.tilte_size}>
-                                <span className={styles.name_title_size}>
-                                    SIZE*
-                                </span>{" "}
+                                <span>SIZE*</span>{" "}
                                 <div
                                     data-toggle="modal"
                                     className={styles.link_size}
                                 >
-                                    Hướng dẫn chọn size
+                                    Hướng dẫn chọn size!
                                 </div>
                             </div>
-                            <Box sx={{ maxWidth: "50%" }}>
+                            <Box sx={{ maxWidth: "100%" }}>
                                 <FormControl fullWidth>
                                     <NativeSelect
                                         defaultValue={30}
@@ -94,6 +96,34 @@ const DetailProduct = () => {
                                     </NativeSelect>
                                 </FormControl>
                             </Box>
+                            <div className={styles.btn_buy}>
+                                <Button
+                                    sx={{ width: "100%" }}
+                                    size="large"
+                                    variant="contained"
+                                >
+                                    <ShoppingCartIcon />
+                                    <div className={styles.content_btn}>
+                                        đăng ký mua
+                                    </div>
+                                </Button>
+                            </div>
+                        </div>
+                        <div className={styles.option_amount}>
+                            <div className={styles.name_title}>SỐ LƯỢNG *</div>
+                            <Counter />
+                            <div className={styles.btn_buy}>
+                                <Button
+                                    sx={{ width: "100%" }}
+                                    size="large"
+                                    variant="contained"
+                                >
+                                    <AddShoppingCartIcon />
+                                    <div className={styles.content_btn}>
+                                        thêm vào giỏ hàng
+                                    </div>
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>
