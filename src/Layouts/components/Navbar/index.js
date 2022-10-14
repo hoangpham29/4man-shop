@@ -12,6 +12,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import Badge from "@mui/material/Badge";
 import DrawerComp from "../../../components/DrawerComp";
 import Logo from "../../../components/Logo";
 import styles from "./Navbar.module.scss";
@@ -43,16 +44,6 @@ const Search = styled("div")(({ theme }) => ({
     },
 }));
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-}));
-
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: "inherit",
     "& .MuiInputBase-input": {
@@ -74,7 +65,8 @@ const Navbar = (props) => {
     const anchorRef = React.useRef();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const openPopper = (event) => setAnchorEl(anchorEl ? null : event.currentTarget);
+    const openPopper = (event) =>
+        setAnchorEl(anchorEl ? null : event.currentTarget);
 
     return (
         <div>
@@ -118,14 +110,18 @@ const Navbar = (props) => {
                             </ul>
                             <div className={styles.navIcon}>
                                 <Link to={routesConfig.cart}>
-                                    <IconButton
-                                        className={styles.btnIcon}
-                                        size="large"
-                                        aria-label="ShoppingCartIcon"
-                                        color="secondary"
-                                    >
-                                        <ShoppingCartIcon className={styles.icon} />
-                                    </IconButton>
+                                    <Badge badgeContent={5} color="error">
+                                        <IconButton
+                                            className={styles.btnIcon}
+                                            size="large"
+                                            aria-label="ShoppingCartIcon"
+                                            color="secondary"
+                                        >
+                                            <ShoppingCartIcon
+                                                className={styles.icon}
+                                            />
+                                        </IconButton>
+                                    </Badge>
                                 </Link>
 
                                 <IconButton
@@ -156,12 +152,7 @@ const Navbar = (props) => {
                                                 }}
                                             >
                                                 <Search>
-                                                    <StyledInputBase
-                                                        placeholder="Search…"
-                                                        inputProps={{
-                                                            "aria-label": "search",
-                                                        }}
-                                                    />
+                                                    <StyledInputBase placeholder="Search…" />
                                                 </Search>
                                             </Typography>
                                         </Popper>

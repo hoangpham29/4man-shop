@@ -28,18 +28,20 @@ const Item = () => {
                             src={item.image}
                             width={250}
                         />
-                        <Link
-                            to={routesConfig.products + "/" + item.id}
-                            className={styles.add_cart}
-                        >
+                        <div className={styles.add_cart}>
                             <AddShoppingCartIcon />
-                        </Link>
+                        </div>
                     </div>
                     <div className={styles.parent_avt_product}>
                         <img className={styles.avt_product} src={item.image} />
                     </div>
                     <div>
-                        <div className={styles.name_product}>{item.name} </div>
+                        <Link
+                            to={routesConfig.products + "/" + item.id}
+                            className={styles.name_product}
+                        >
+                            {item.name}{" "}
+                        </Link>
                         <div className={styles.cost_product}>{item.cost} </div>
                     </div>
                 </div>
