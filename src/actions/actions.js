@@ -1,34 +1,33 @@
-import {
-    ADD_CART,
-    DELETE_CART,
-    INCREASE_CART,
-    DECREASE_CART,
-} from "./actionTypes";
+//import request from "../utils/request";
 
-const addCart = (cart) => {
+export const INCREASE_QUANTITY = "INCREASE_QUANTITY";
+export const DECREASE_QUANTITY = "DECREASE_QUANTITY";
+export const ADD_CART = "ADD_CART";
+export const DELETE_CART = "DELETE_CART";
+
+export function AddCart(payload) {
     return {
         type: ADD_CART,
-        payload: cart,
+        payload,
     };
-};
+}
 
-const deleteCart = (cart) => {
+export function DeleteCart(payload) {
     return {
         type: DELETE_CART,
-        payload: cart,
+        payload,
     };
-};
+}
 
-const increaseCart = (cart) => {
+export function IncreaseQuantity(payload) {
     return {
-        type: INCREASE_CART,
-        payload: cart,
+        type: INCREASE_QUANTITY,
+        payload,
     };
-};
-
-const decreaseCart = (cart) => {
+}
+export function DecreaseQuantity(payload) {
     return {
-        type: DECREASE_CART,
-        payload: cart,
+        type: DECREASE_QUANTITY,
+        payload,
     };
-};
+}

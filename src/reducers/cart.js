@@ -1,81 +1,89 @@
 import {
     ADD_CART,
+    DECREASE_QUANTITY,
+    INCREASE_QUANTITY,
     DELETE_CART,
-    INCREASE_CART,
-    DECREASE_CART,
-} from "../actions/actionTypes";
+} from "../actions/actions";
 
 const initialState = {
-    cartAr: [
-        {
-            id: 1,
-            title: "hello world",
-        },
-    ],
+    products: [],
+    carts: [],
+    numberCart: 0,
 };
 
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_CART:
-            const productInCart = state.cartAr.find(
-                (product) => product.id === action.payload.id
-            );
-            if (productInCart) {
-                const newCart = state.cartAr.map((product) =>
-                    product.id === action.payload.id
-                        ? {
-                              ...product,
-                              quantity:
-                                  product.quantity + action.payload.quantity,
-                          }
-                        : product
-                );
-                return {
-                    ...state,
-                    cartAr: newCart,
+            if (state.numberCart === 0) {
+                let cart = {
+                    id: action.payload.id,
+                    quantity: 1,
+                    name: action.payload.name,
+                    image: action.payload.image,
+                    price: action.payload.cost,
                 };
+                state.carts.push(cart);
+            } else {
+                let check = false;
+                state.carts.map((item, key) => {
+                    if (item.id === action.payload.id) {
+                        state.carts[key].quantity++;
+                        check = true;
+                    }
+                    return {
+                        ...state,
+                    };
+                });
+                if (!check) {
+                    let _cart = {
+                        id: action.payload.id,
+                        quantity: 1,
+                        name: action.payload.name,
+                        image: action.payload.image,
+                        price: action.payload.cost,
+                    };
+                    state.carts.push(_cart);
+                }
             }
             return {
                 ...state,
-                cartAr: [...state.carts, action.payload],
+                numberCart: state.numberCart + 1,
+            };
+        case INCREASE_QUANTITY:
+            const newCart = state.carts.map((item) =>
+                item.id === action.payload.id
+                    ? {
+                          ...item,
+                          quantity: item.quantity + 1,
+                      }
+                    : item
+            );
+            return {
+                ...state,
+                carts: newCart,
+            };
+
+        case DECREASE_QUANTITY:
+            const _newCart = state.carts.map((item) =>
+                item.id === action.payload.id
+                    ? {
+                          ...item,
+                          quantity: item.quantity - 1,
+                      }
+                    : item
+            );
+            return {
+                ...state,
+                carts: _newCart,
             };
         case DELETE_CART:
-            const filterCart = state.cartAr.filter(
-                (item) => item.id !== action.payload.id
-            );
             return {
                 ...state,
-                cartAr: filterCart,
+                numberCart: state.carts.length,
+                carts: state.carts.filter((item) => {
+                    return item.id !== action.payload.id;
+                }),
             };
-        case INCREASE_CART:
-            const newCart = state.cartAr.map((product) =>
-                product.id === action.payload
-                    ? {
-                          ...product,
-                          quantity: product.quantity + 1,
-                      }
-                    : product
-            );
-            return {
-                ...state,
-                cartAr: newCart,
-            };
-        case DECREASE_CART:
-            if (action.payload.quantity === 1) {
-                const filterCart = state.cartAr.filter(
-                    (product) => product.id !== action.payload.id
-                );
-                return { ...state, cartAr: filterCart };
-            }
-            const cart = state.cartAr.map((product) =>
-                product.id === action.payload.id
-                    ? {
-                          ...product,
-                          quantity: product.quantity - 1,
-                      }
-                    : product
-            );
-            return { ...state, cartAr: cart };
         default:
             return state;
     }

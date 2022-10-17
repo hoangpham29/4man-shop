@@ -4,7 +4,7 @@ import url from "../../../assets/images/banner.jpg";
 const Banner = () => {
     return (
         <div>
-            <img className={styles.banner} src={url} />
+            <img className={styles.banner} src={url} alt="banner" />
         </div>
     );
 };

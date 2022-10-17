@@ -18,6 +18,7 @@ import Logo from "../../../components/Logo";
 import styles from "./Navbar.module.scss";
 import routesConfig from "../../../config/routes";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const PAGES = [
     "HÀNG MỚI",
@@ -59,6 +60,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar = (props) => {
+    const numberCart = useSelector((state) => state.carts.length);
+
     const theme = useTheme();
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -110,7 +113,10 @@ const Navbar = (props) => {
                             </ul>
                             <div className={styles.navIcon}>
                                 <Link to={routesConfig.cart}>
-                                    <Badge badgeContent={5} color="error">
+                                    <Badge
+                                        badgeContent={numberCart}
+                                        color="error"
+                                    >
                                         <IconButton
                                             className={styles.btnIcon}
                                             size="large"

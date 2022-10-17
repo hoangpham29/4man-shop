@@ -3,10 +3,16 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import request from "../../utils/request";
 import routesConfig from "../../config/routes";
+import { useDispatch, useSelector } from "react-redux";
+import { AddCart } from "../../actions/actions";
+// import { actFetchProductsRequest } from "../../actions";
 import styles from "./Items.module.scss";
 
 const Item = () => {
+    const dispatch = useDispatch();
+
     const [items, setItems] = useState([]);
+
     useEffect(() => {
         request
             .get("/hotclothes")
@@ -18,6 +24,10 @@ const Item = () => {
             });
     }, []);
 
+    const hanldeAddCart = (product) => {
+        dispatch(AddCart(product));
+    };
+
     return (
         <div className={styles.wrapper}>
             {items.map((item) => (
@@ -28,7 +38,10 @@ const Item = () => {
                             src={item.image}
                             width={250}
                         />
-                        <div className={styles.add_cart}>
+                        <div
+                            className={styles.add_cart}
+                            onClick={() => hanldeAddCart(item)}
+                        >
                             <AddShoppingCartIcon />
                         </div>
                     </div>
