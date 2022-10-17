@@ -3,9 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import request from "../../utils/request";
 import routesConfig from "../../config/routes";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { AddCart } from "../../actions/actions";
-// import { actFetchProductsRequest } from "../../actions";
 import styles from "./Items.module.scss";
 
 const Item = () => {
@@ -37,6 +36,7 @@ const Item = () => {
                             className={styles.img_product}
                             src={item.image}
                             width={250}
+                            alt="product"
                         />
                         <div
                             className={styles.add_cart}
@@ -46,7 +46,11 @@ const Item = () => {
                         </div>
                     </div>
                     <div className={styles.parent_avt_product}>
-                        <img className={styles.avt_product} src={item.image} />
+                        <img
+                            className={styles.avt_product}
+                            src={item.image}
+                            alt="product"
+                        />
                     </div>
                     <div>
                         <Link
