@@ -16,7 +16,6 @@ const Login = () => {
         email: "",
         password: "",
         showPassword: false,
-        submitted: false,
     });
 
     const handleChange = (prop) => (event) => {
@@ -34,11 +33,7 @@ const Login = () => {
         event.preventDefault();
     };
 
-    const handleSubmit = () => {
-        setValues({ ...values, submitted: true }, () => {
-            setTimeout(() => setValues({ ...values, submitted: false }), 5000);
-        });
-    };
+    const handleSubmit = () => {};
 
     return (
         <div>
@@ -87,9 +82,7 @@ const Login = () => {
                                         <IconButton
                                             aria-label="toggle password visibility"
                                             onClick={handleClickShowPassword}
-                                            onMouseDown={
-                                                handleMouseDownPassword
-                                            }
+                                            onMouseDown={ handleMouseDownPassword }
                                             edge="end"
                                         >
                                             {values.showPassword ? (

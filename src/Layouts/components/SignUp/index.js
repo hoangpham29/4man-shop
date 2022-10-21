@@ -17,7 +17,6 @@ const SignUp = () => {
         confirmpassword: "",
         email: "",
         showPassword: false,
-        submitted: false,
     });
 
     useEffect(() => {
@@ -35,7 +34,7 @@ const SignUp = () => {
                 ValidatorForm.removeValidationRule("isPasswordMatch");
             }
         };
-    }, [values.confirmpassword, values.password]);
+    }, [values.password]);
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -55,10 +54,8 @@ const SignUp = () => {
         });
     };
 
-    const handleSubmit = () => {
-        setValues({ ...values, submitted: true }, () => {
-            setTimeout(() => setValues({ ...values, submitted: false }), 5000);
-        });
+    const handleSubmit = (data) => {
+        console.log(data);
     };
 
     return (
