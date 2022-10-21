@@ -13,6 +13,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
+import LoginIcon from "@mui/icons-material/Login";
 import DrawerComp from "../../../components/DrawerComp";
 import Logo from "../../../components/Logo";
 import styles from "./Navbar.module.scss";
@@ -139,6 +140,17 @@ const Navbar = (props) => {
                                 >
                                     <SearchIcon className={styles.icon} />
                                 </IconButton>
+
+                                <Link to={routesConfig.login}>
+                                    <IconButton
+                                        className={styles.btnIcon}
+                                        size="large"
+                                        aria-label="search"
+                                        color="secondary"
+                                    >
+                                        <LoginIcon className={styles.icon} />
+                                    </IconButton>
+                                </Link>
                                 <div ref={anchorRef}>
                                     {anchorEl && (
                                         <Popper

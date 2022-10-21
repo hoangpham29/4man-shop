@@ -4,12 +4,16 @@ import Products from "../pages/Products";
 import Home from "../pages/Home";
 import DetailProduct from "../components/DetailProduct";
 import Cart from "../Layouts/components/Cart";
+import Login from "../Layouts/components/Login";
+import SignUp from "../Layouts/components/SignUp";
 
 const publicRoutes = [
     { path: routesConfig.home, component: Home },
     { path: routesConfig.products, component: Products },
     { path: routesConfig.detailproducts, component: DetailProduct },
     { path: routesConfig.cart, component: Cart },
+    { path: routesConfig.login, component: Login, layout: null },
+    { path: routesConfig.signup, component: SignUp, layout: null },
 ];
 
 //private routes

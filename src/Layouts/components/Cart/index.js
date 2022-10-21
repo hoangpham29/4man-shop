@@ -26,7 +26,7 @@ const Cart = () => {
             <div className={styles.container}>
                 <table>
                     <tbody>
-                        <tr>
+                        <tr className={styles.title_cart}>
                             <th>Product</th>
                             <th>Image</th>
                             <th>Quantity</th>
