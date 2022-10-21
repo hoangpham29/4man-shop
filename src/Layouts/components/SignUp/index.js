@@ -150,9 +150,7 @@ const SignUp = () => {
                                     <InputAdornment position="end">
                                         <IconButton
                                             aria-label="toggle password visibility"
-                                            onClick={
-                                                handleClickShowConfirmPassword
-                                            }
+                                            onClick={handleClickShowConfirmPassword}
                                             edge="end"
                                         >
                                             {values.showConfirmPassword ? (

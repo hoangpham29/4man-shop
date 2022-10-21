@@ -82,7 +82,7 @@ const Login = () => {
                                         <IconButton
                                             aria-label="toggle password visibility"
                                             onClick={handleClickShowPassword}
-                                            onMouseDown={ handleMouseDownPassword }
+                                            onMouseDown={handleMouseDownPassword}
                                             edge="end"
                                         >
                                             {values.showPassword ? (
