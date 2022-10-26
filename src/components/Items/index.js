@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import request from "../../utils/request";
 import routesConfig from "../../config/routes";
 import { useDispatch } from "react-redux";
-import { AddCart } from "../../actions/actions";
 import styles from "./Items.module.scss";
+import cartsSlice from "../../redux/cartsSlice/cartsSlice";
 
 const Item = () => {
     const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Item = () => {
     }, []);
 
     const hanldeAddCart = (product) => {
-        dispatch(AddCart(product));
+        dispatch(cartsSlice.actions.AddCart(product));
     };
 
     return (
@@ -38,19 +38,12 @@ const Item = () => {
                             width={250}
                             alt="product"
                         />
-                        <div
-                            className={styles.add_cart}
-                            onClick={() => hanldeAddCart(item)}
-                        >
+                        <div className={styles.add_cart} onClick={() => hanldeAddCart(item)}>
                             <AddShoppingCartIcon />
                         </div>
                     </div>
                     <div className={styles.parent_avt_product}>
-                        <img
-                            className={styles.avt_product}
-                            src={item.image}
-                            alt="product"
-                        />
+                        <img className={styles.avt_product} src={item.image} alt="product" />
                     </div>
                     <div>
                         <Link

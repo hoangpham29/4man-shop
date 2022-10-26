@@ -9,8 +9,12 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link } from "react-router-dom";
 import routesConfig from "../../../config/routes";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { useDispatch } from "react-redux";
+import { register } from "../../../redux/usersSlice/usersSlice";
 
 const SignUp = () => {
+    const dispatch = useDispatch();
+
     const [values, setValues] = useState({
         name: "",
         password: "",
@@ -54,8 +58,8 @@ const SignUp = () => {
         });
     };
 
-    const handleSubmit = (data) => {
-        console.log(data);
+    const handleSubmit = () => {
+        dispatch(register(values));
     };
 
     return (
@@ -95,10 +99,7 @@ const SignUp = () => {
                             value={values.email}
                             onChange={handleChange("email")}
                             validators={["required", "isEmail"]}
-                            errorMessages={[
-                                "This field is required.",
-                                "Email is not valid",
-                            ]}
+                            errorMessages={["This field is required.", "Email is not valid"]}
                         />
                     </Box>
                     <FormControl sx={{ m: 1 }} variant="outlined">
@@ -135,16 +136,11 @@ const SignUp = () => {
                     <FormControl sx={{ m: 1 }} variant="outlined">
                         <TextValidator
                             sx={{ width: 400 }}
-                            type={
-                                values.showConfirmPassword ? "text" : "password"
-                            }
+                            type={values.showConfirmPassword ? "text" : "password"}
                             value={values.confirmpassword}
                             onChange={handleChange("confirmpassword")}
                             validators={["isPasswordMatch", "required"]}
-                            errorMessages={[
-                                "password mismatch",
-                                "This field is required",
-                            ]}
+                            errorMessages={["password mismatch", "This field is required"]}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">
@@ -178,10 +174,7 @@ const SignUp = () => {
                     >
                         Sign Up
                     </Button>
-                    <Link
-                        to={routesConfig.login}
-                        style={{ textDecoration: "none" }}
-                    >
+                    <Link to={routesConfig.login} style={{ textDecoration: "none" }}>
                         <Button
                             sx={{
                                 marginTop: 3,

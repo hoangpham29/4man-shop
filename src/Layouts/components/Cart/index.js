@@ -3,23 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import styles from "./cart.module.scss";
-import {
-    DeleteCart,
-    IncreaseQuantity,
-    DecreaseQuantity,
-} from "../../../actions/actions";
+import cartsSlice from "../../../redux/cartsSlice/cartsSlice";
+// import {
+//     DeleteCart,
+//     IncreaseQuantity,
+//     DecreaseQuantity,
+// } from "../../../actions/actions";
 
 const Cart = () => {
     const carts = useSelector((state) => state.carts);
     const dispatch = useDispatch();
-    const hanldeDeleteCart = (id) => dispatch(DeleteCart({ id }));
+    const hanldeDeleteCart = (id) => dispatch(cartsSlice.actions.DeleteCart({ id }));
     const decreaseQuantity = (id, quantity) => {
         if (quantity === 1) {
             return;
         }
-        dispatch(DecreaseQuantity({ id, quantity }));
+        dispatch(cartsSlice.actions.DecreaseQuantity({ id, quantity }));
     };
-    const increaseQuantity = (id) => dispatch(IncreaseQuantity({ id }));
+    const increaseQuantity = (id) => dispatch(cartsSlice.actions.IncreaseQuantity({ id }));
 
     return (
         <div className={styles.wrapper}>
@@ -41,31 +42,20 @@ const Cart = () => {
                             <tr className={styles.cart_products} key={cart.id}>
                                 <td>{cart.name}</td>
                                 <td>
-                                    <img
-                                        className={styles.img}
-                                        src={cart.image}
-                                        alt="product"
-                                    />
+                                    <img className={styles.img} src={cart.image} alt="product" />
                                 </td>
                                 <td>
                                     <div className={styles.quantity_cart}>
                                         <button
                                             className={styles.decrease_qty}
-                                            onClick={() =>
-                                                decreaseQuantity(
-                                                    cart.id,
-                                                    cart.quantity
-                                                )
-                                            }
+                                            onClick={() => decreaseQuantity(cart.id, cart.quantity)}
                                         >
                                             -
                                         </button>
                                         <span>{cart.quantity}</span>
                                         <button
                                             className={styles.increase_qty}
-                                            onClick={() =>
-                                                increaseQuantity(cart.id)
-                                            }
+                                            onClick={() => increaseQuantity(cart.id)}
                                         >
                                             +
                                         </button>
@@ -77,9 +67,7 @@ const Cart = () => {
                                     <IconButton
                                         aria-label="upload picture"
                                         component="label"
-                                        onClick={() =>
-                                            hanldeDeleteCart(cart.id)
-                                        }
+                                        onClick={() => hanldeDeleteCart(cart.id)}
                                     >
                                         <DeleteIcon />
                                     </IconButton>

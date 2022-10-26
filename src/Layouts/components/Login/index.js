@@ -6,12 +6,19 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import routesConfig from "../../../config/routes";
 import styles from "./login.module.scss";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../../firebase";
+import { useDispatch } from "react-redux";
+import { login } from "../../../redux/usersSlice/usersSlice";
 
 const Login = () => {
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
     const [values, setValues] = useState({
         email: "",
         password: "",
@@ -33,7 +40,23 @@ const Login = () => {
         event.preventDefault();
     };
 
-    const handleSubmit = () => {};
+    const handleSubmit = () => {
+        dispatch(login(values));
+    };
+
+    // Initialize Firebase
+
+    const handleLoginGoogle = () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const profilePic = result.user.photoURL;
+                localStorage.setItem("user", profilePic);
+                navigate("/");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
     return (
         <div>
@@ -60,10 +83,7 @@ const Login = () => {
                         value={values.email}
                         onChange={handleChange("email")}
                         validators={["required", "isEmail"]}
-                        errorMessages={[
-                            "This field is required.",
-                            "Email is not valid",
-                        ]}
+                        errorMessages={["This field is required.", "Email is not valid"]}
                     />
                     <FormControl sx={{ m: 1 }} variant="outlined">
                         <TextValidator
@@ -110,10 +130,20 @@ const Login = () => {
                     >
                         Login
                     </Button>
-                    <Link
-                        to={routesConfig.signup}
-                        style={{ textDecoration: "none" }}
+                    <Button
+                        onClick={handleLoginGoogle}
+                        sx={{
+                            marginTop: 3,
+                            borderRadius: 1,
+                            height: 35,
+                            width: "400px",
+                        }}
+                        variant="contained"
+                        color="warning"
                     >
+                        Login with google
+                    </Button>
+                    <Link to={routesConfig.signup} style={{ textDecoration: "none" }}>
                         <Button
                             sx={{
                                 marginTop: 3,
@@ -123,10 +153,7 @@ const Login = () => {
                             Change to signup
                         </Button>
                     </Link>
-                    <Link
-                        to={routesConfig.home}
-                        className={styles.back_to_home}
-                    >
+                    <Link to={routesConfig.home} className={styles.back_to_home}>
                         Back to Home
                     </Link>
                 </Box>
