@@ -24,7 +24,7 @@ const Item = () => {
     }, []);
 
     const hanldeAddCart = (product) => {
-        dispatch(cartsSlice.actions.AddCart(product));
+        dispatch(cartsSlice.actions.addCart(product));
     };
 
     return (

@@ -4,8 +4,8 @@ import Products from "../pages/Products";
 import Home from "../pages/Home";
 import DetailProduct from "../components/DetailProduct";
 import Cart from "../Layouts/components/Cart";
-import Login from "../Layouts/components/Login";
-import SignUp from "../Layouts/components/SignUp";
+import Login from "../pages/Login";
+import SignUp from "../pages/SignUp";
 
 const publicRoutes = [
     { path: routesConfig.home, component: Home },

@@ -1,11 +1,5 @@
 import * as React from "react";
-import {
-    AppBar,
-    Toolbar,
-    useMediaQuery,
-    useTheme,
-    Typography,
-} from "@mui/material";
+import { AppBar, Toolbar, useMediaQuery, useTheme, Typography } from "@mui/material";
 import Popper from "@mui/material/Popper";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
@@ -21,14 +15,7 @@ import routesConfig from "../../../config/routes";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const PAGES = [
-    "HÀNG MỚI",
-    "ÁO NAM",
-    "QUẦN NAM",
-    "PHỤ KIỆN",
-    "GIÀY DÉP",
-    "KHUYẾN MÃI",
-];
+const PAGES = ["HÀNG MỚI", "ÁO NAM", "QUẦN NAM", "PHỤ KIỆN", "GIÀY DÉP", "KHUYẾN MÃI"];
 
 const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -50,7 +37,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: "inherit",
     "& .MuiInputBase-input": {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create("width"),
         width: "100%",
@@ -61,7 +47,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar = (props) => {
-    const numberCart = useSelector((state) => state.carts.length);
+    const numberCart = useSelector((state) => state.carts.carts.length);
 
     const theme = useTheme();
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
@@ -69,8 +55,7 @@ const Navbar = (props) => {
     const anchorRef = React.useRef();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const openPopper = (event) =>
-        setAnchorEl(anchorEl ? null : event.currentTarget);
+    const openPopper = (event) => setAnchorEl(anchorEl ? null : event.currentTarget);
 
     return (
         <div>
@@ -114,19 +99,14 @@ const Navbar = (props) => {
                             </ul>
                             <div className={styles.navIcon}>
                                 <Link to={routesConfig.cart}>
-                                    <Badge
-                                        badgeContent={numberCart}
-                                        color="error"
-                                    >
+                                    <Badge badgeContent={numberCart} color="error">
                                         <IconButton
                                             className={styles.btnIcon}
                                             size="large"
                                             aria-label="ShoppingCartIcon"
                                             color="secondary"
                                         >
-                                            <ShoppingCartIcon
-                                                className={styles.icon}
-                                            />
+                                            <ShoppingCartIcon className={styles.icon} />
                                         </IconButton>
                                     </Badge>
                                 </Link>

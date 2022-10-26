@@ -1,120 +1,120 @@
 {
-  "hotclothes": [
-    {
-      "id": 1,
-      "name": "Áo Khoác Regular Túi Hộp AK032 ",
-      "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/09/ao-khoac-regular-tui-hop-ak032-mau-xanh_small-16966.JPG",
-      "cost": 458000
-    },
-    {
-      "id": 2,
-      "name": "Giày Chelsea Boots All Black G018 Màu Đen",
-      "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/08/giay-tay-leather-g017_small-17174.JPG",
-      "cost": 975000
-    },
-    {
-      "id": 3,
-      "name": "Giày Tây 4MEN G002 Màu Đen",
-      "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2021/05/giay-tay-4men-g002-mau-den_small-15910.png",
-      "cost": 695000
-    },
-    {
-      "id": 4,
-      "name": "Quần Tây Phối Dây Sọc QT023 Màu Đen",
-      "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/02/quan-tay-phoi-day-soc-qt023-mau-den_small-15964.png",
-      "cost": 385000
-    },
-    {
-      "id": 5,
-      "name": "Áo Sơ Mi Oxford Tay Ngắn ASM017 Màu Xanh",
-      "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2020/07/ao-so-mi-oxford-tay-ngan-asm017-mau-xanh_small-15391.png",
-      "cost": 245000
-    },
-    {
-      "id": 6,
-      "name": "Giày Thể Thao Phối Trắng G008 Màu Đen",
-      "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/02/giay-the-thao-phoi-trang-g008-mau-den_small-16554.jpg",
-      "cost": 495000
-    },
-    {
-      "id": 7,
-      "name": "Giày Loafer Allblack G019 Màu Đen",
-      "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/08/giay-chelsea-boots-all-black-g018-mau-den_small-17175.JPG",
-      "cost": 975000
-    },
-    {
-      "id": 8,
-      "name": "Giày Thể Thao Phối Đen G008 Màu Trắng",
-      "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/02/giay-the-thao-phoi-den-g008-mau-trang_small-16552.jpg",
-      "cost": 495000
-    }
-  ],
-  "users": [
-    {
-      "email": "admin@admin.vn",
-      "password": "$2a$10$cyB4kWrMEVJYPKanxCIYN.hMxoIejhQs8zDZa4TdYmdORU7OG98p2",
-      "user-name": "admin",
-      "id": 1
-    },
-    {
-      "email": "hoang.pham@tda.company",
-      "password": "$2a$10$VZQswA82HbhXVVmqhCvd5e5e6zgq.D8aYv/WE7wIMrVM1C/.kuIp6",
-      "name": "hoang",
-      "id": 2
-    },
-    {
-      "email": "linhnv@tda.company",
-      "password": "$2a$10$WK.7GxlJ7EEQbRXNXrKt0eXAmFbEVGvjk1rtvjtu5zZFuOdgXXtJS",
-      "name": "linh",
-      "id": 3
-    },
-    {
-      "email": "thuanlv@tda.company",
-      "password": "$2a$10$vOqPtEFzuFp8Uf.tso5OU.xCsd1BdTJo1uxkgUXns626nn0XvRYuK",
-      "name": "thuan",
-      "id": 4
-    },
-    {
-      "email": "namdt@gmail.com",
-      "password": "$2a$10$W6mDa5iqTd2OYBDk5JhFyeZw117asej8wiDmwG04dLhSCZ70eqZeO",
-      "name": "nam",
-      "id": 5
-    },
-    {
-      "email": "mydog@gmail.com",
-      "password": "$2a$10$R8qrPpvgDRfanVOyA.YynuAY7zHU4teOT3.vRE48jJeMEGC7SBPHe",
-      "name": "dog",
-      "id": 6
-    },
-    {
-      "email": "mycat@gmail.com",
-      "password": "$2a$10$kvtph83xE6/8.FvVnuB.TeT.APRnnoI90YHJMxBAopfCk8D238BJG",
-      "name": "cat",
-      "id": 7
-    },
-    {
-      "email": "peter@tda.company",
-      "password": "$2a$10$XJF0yDn/WRINj2FfzHPI/uls94Ju8zbzXdUDpCuY1KqqMZ7UCsxlu",
-      "name": "Peter",
-      "id": 8
-    },
-    {
-      "email": "hoang.pham2000@gmail.com",
-      "password": "$2a$10$zLEC/aca77TkarsCYffGnu445x1GDVY2WQBdkyOpN9VfwUUtG0u8S",
-      "name": "hoang",
-      "id": 9
-    },
-    {
-      "email": "hoang.pham@gmail.com",
-      "password": "$2a$10$nEqvYV934VT7SKtY56ZvxO8fRhiayDK2oWJLVsG74Fi0a4YvZhdG2",
-      "name": "hoang",
-      "id": 10
-    },
-    {
-      "email": "hoangp@gmail.com",
-      "password": "$2a$10$XPpKUaQ2eIHFplodMnG.Uu34bMQ3vJ6g29EEmW2UCZkoWABB5WURe",
-      "name": "hoàng",
-      "id": 11
-    }
-  ]
+    "hotclothes": [
+        {
+            "id": 1,
+            "name": "Áo Khoác Regular Túi Hộp AK032 ",
+            "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/09/ao-khoac-regular-tui-hop-ak032-mau-xanh_small-16966.JPG",
+            "cost": 458000
+        },
+        {
+            "id": 2,
+            "name": "Giày Chelsea Boots All Black G018 Màu Đen",
+            "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/08/giay-tay-leather-g017_small-17174.JPG",
+            "cost": 975000
+        },
+        {
+            "id": 3,
+            "name": "Giày Tây 4MEN G002 Màu Đen",
+            "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2021/05/giay-tay-4men-g002-mau-den_small-15910.png",
+            "cost": 695000
+        },
+        {
+            "id": 4,
+            "name": "Quần Tây Phối Dây Sọc QT023 Màu Đen",
+            "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/02/quan-tay-phoi-day-soc-qt023-mau-den_small-15964.png",
+            "cost": 385000
+        },
+        {
+            "id": 5,
+            "name": "Áo Sơ Mi Oxford Tay Ngắn ASM017 Màu Xanh",
+            "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2020/07/ao-so-mi-oxford-tay-ngan-asm017-mau-xanh_small-15391.png",
+            "cost": 245000
+        },
+        {
+            "id": 6,
+            "name": "Giày Thể Thao Phối Trắng G008 Màu Đen",
+            "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/02/giay-the-thao-phoi-trang-g008-mau-den_small-16554.jpg",
+            "cost": 495000
+        },
+        {
+            "id": 7,
+            "name": "Giày Loafer Allblack G019 Màu Đen",
+            "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/08/giay-chelsea-boots-all-black-g018-mau-den_small-17175.JPG",
+            "cost": 975000
+        },
+        {
+            "id": 8,
+            "name": "Giày Thể Thao Phối Đen G008 Màu Trắng",
+            "image": "https://4menshop.com/cache/image/300x400/images/thumbs/2022/02/giay-the-thao-phoi-den-g008-mau-trang_small-16552.jpg",
+            "cost": 495000
+        }
+    ],
+    "users": [
+        {
+            "email": "admin@admin.vn",
+            "password": "$2a$10$cyB4kWrMEVJYPKanxCIYN.hMxoIejhQs8zDZa4TdYmdORU7OG98p2",
+            "user-name": "admin",
+            "id": 1
+        },
+        {
+            "email": "hoang.pham@tda.company",
+            "password": "$2a$10$VZQswA82HbhXVVmqhCvd5e5e6zgq.D8aYv/WE7wIMrVM1C/.kuIp6",
+            "name": "hoang",
+            "id": 2
+        },
+        {
+            "email": "linhnv@tda.company",
+            "password": "$2a$10$WK.7GxlJ7EEQbRXNXrKt0eXAmFbEVGvjk1rtvjtu5zZFuOdgXXtJS",
+            "name": "linh",
+            "id": 3
+        },
+        {
+            "email": "thuanlv@tda.company",
+            "password": "$2a$10$vOqPtEFzuFp8Uf.tso5OU.xCsd1BdTJo1uxkgUXns626nn0XvRYuK",
+            "name": "thuan",
+            "id": 4
+        },
+        {
+            "email": "namdt@gmail.com",
+            "password": "$2a$10$W6mDa5iqTd2OYBDk5JhFyeZw117asej8wiDmwG04dLhSCZ70eqZeO",
+            "name": "nam",
+            "id": 5
+        },
+        {
+            "email": "mydog@gmail.com",
+            "password": "$2a$10$R8qrPpvgDRfanVOyA.YynuAY7zHU4teOT3.vRE48jJeMEGC7SBPHe",
+            "name": "dog",
+            "id": 6
+        },
+        {
+            "email": "mycat@gmail.com",
+            "password": "$2a$10$kvtph83xE6/8.FvVnuB.TeT.APRnnoI90YHJMxBAopfCk8D238BJG",
+            "name": "cat",
+            "id": 7
+        },
+        {
+            "email": "peter@tda.company",
+            "password": "$2a$10$XJF0yDn/WRINj2FfzHPI/uls94Ju8zbzXdUDpCuY1KqqMZ7UCsxlu",
+            "name": "Peter",
+            "id": 8
+        },
+        {
+            "email": "hoang.pham2000@gmail.com",
+            "password": "$2a$10$zLEC/aca77TkarsCYffGnu445x1GDVY2WQBdkyOpN9VfwUUtG0u8S",
+            "name": "hoang",
+            "id": 9
+        },
+        {
+            "email": "hoang.pham@gmail.com",
+            "password": "$2a$10$nEqvYV934VT7SKtY56ZvxO8fRhiayDK2oWJLVsG74Fi0a4YvZhdG2",
+            "name": "hoang",
+            "id": 10
+        },
+        {
+            "email": "hoangp@gmail.com",
+            "password": "$2a$10$XPpKUaQ2eIHFplodMnG.Uu34bMQ3vJ6g29EEmW2UCZkoWABB5WURe",
+            "name": "hoàng",
+            "id": 11
+        }
+    ]
 }

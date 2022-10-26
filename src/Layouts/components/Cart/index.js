@@ -4,23 +4,18 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import styles from "./cart.module.scss";
 import cartsSlice from "../../../redux/cartsSlice/cartsSlice";
-// import {
-//     DeleteCart,
-//     IncreaseQuantity,
-//     DecreaseQuantity,
-// } from "../../../actions/actions";
 
 const Cart = () => {
-    const carts = useSelector((state) => state.carts);
+    const carts = useSelector((state) => state.carts.carts);
     const dispatch = useDispatch();
-    const hanldeDeleteCart = (id) => dispatch(cartsSlice.actions.DeleteCart({ id }));
+    const hanldeDeleteCart = (id) => dispatch(cartsSlice.actions.deleteCart({ id }));
     const decreaseQuantity = (id, quantity) => {
         if (quantity === 1) {
             return;
         }
-        dispatch(cartsSlice.actions.DecreaseQuantity({ id, quantity }));
+        dispatch(cartsSlice.actions.decreaseQuantity({ id, quantity }));
     };
-    const increaseQuantity = (id) => dispatch(cartsSlice.actions.IncreaseQuantity({ id }));
+    const increaseQuantity = (id) => dispatch(cartsSlice.actions.increaseQuantity({ id }));
 
     return (
         <div className={styles.wrapper}>

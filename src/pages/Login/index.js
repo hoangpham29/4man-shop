@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Box, Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
@@ -6,39 +6,24 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Link } from "react-router-dom";
-import routesConfig from "../../../config/routes";
+import { Link, useNavigate } from "react-router-dom";
+import routesConfig from "../../config/routes";
+import styles from "./login.module.scss";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../firebase";
 import { useDispatch } from "react-redux";
-import { register } from "../../../redux/usersSlice/usersSlice";
+import { login } from "../../redux/usersSlice/usersSlice";
 
-const SignUp = () => {
+const Login = () => {
     const dispatch = useDispatch();
 
+    const navigate = useNavigate();
     const [values, setValues] = useState({
-        name: "",
-        password: "",
-        confirmpassword: "",
         email: "",
+        password: "",
         showPassword: false,
     });
-
-    useEffect(() => {
-        if (!ValidatorForm.hasValidationRule("isPasswordMatch")) {
-            ValidatorForm.addValidationRule("isPasswordMatch", (value) => {
-                if (value !== values.password) {
-                    return false;
-                }
-                return true;
-            });
-        }
-
-        return () => {
-            if (ValidatorForm.hasValidationRule("isPasswordMatch")) {
-                ValidatorForm.removeValidationRule("isPasswordMatch");
-            }
-        };
-    }, [values.password]);
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -51,15 +36,24 @@ const SignUp = () => {
         });
     };
 
-    const handleClickShowConfirmPassword = () => {
-        setValues({
-            ...values,
-            showConfirmPassword: !values.showConfirmPassword,
-        });
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
     };
 
     const handleSubmit = () => {
-        dispatch(register(values));
+        dispatch(login(values));
+    };
+
+    const handleLoginGoogle = () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const profilePic = result.user.photoURL;
+                localStorage.setItem("user", profilePic);
+                navigate("/");
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
     };
 
     return (
@@ -78,33 +72,20 @@ const SignUp = () => {
                     boxShadow={"5px 5px 10px #ccc"}
                 >
                     <Typography variant="h2" padding={3} textAlign="center">
-                        Sign Up
+                        Login
                     </Typography>
-                    <Box mb={-1}>
-                        <TextValidator
-                            sx={{ width: 400 }}
-                            margin="normal"
-                            label="Name"
-                            value={values.name}
-                            onChange={handleChange("name")}
-                            validators={["required"]}
-                            errorMessages={["This field is required."]}
-                        />
-                    </Box>
-                    <Box>
-                        <TextValidator
-                            sx={{ width: 400 }}
-                            margin="normal"
-                            label="Email"
-                            value={values.email}
-                            onChange={handleChange("email")}
-                            validators={["required", "isEmail"]}
-                            errorMessages={["This field is required.", "Email is not valid"]}
-                        />
-                    </Box>
+                    <TextValidator
+                        sx={{ width: "400px" }}
+                        margin="normal"
+                        label="Email"
+                        value={values.email}
+                        onChange={handleChange("email")}
+                        validators={["required", "isEmail"]}
+                        errorMessages={["This field is required.", "Email is not valid"]}
+                    />
                     <FormControl sx={{ m: 1 }} variant="outlined">
                         <TextValidator
-                            sx={{ width: 400 }}
+                            sx={{ width: "400px" }}
                             type={values.showPassword ? "text" : "password"}
                             value={values.password}
                             onChange={handleChange("password")}
@@ -119,6 +100,7 @@ const SignUp = () => {
                                         <IconButton
                                             aria-label="toggle password visibility"
                                             onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
                                             edge="end"
                                         >
                                             {values.showPassword ? (
@@ -133,56 +115,44 @@ const SignUp = () => {
                             label="Password"
                         />
                     </FormControl>
-                    <FormControl sx={{ m: 1 }} variant="outlined">
-                        <TextValidator
-                            sx={{ width: 400 }}
-                            type={values.showConfirmPassword ? "text" : "password"}
-                            value={values.confirmpassword}
-                            onChange={handleChange("confirmpassword")}
-                            validators={["isPasswordMatch", "required"]}
-                            errorMessages={["password mismatch", "This field is required"]}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowConfirmPassword}
-                                            edge="end"
-                                        >
-                                            {values.showConfirmPassword ? (
-                                                <VisibilityOff />
-                                            ) : (
-                                                <Visibility />
-                                            )}
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            }}
-                            label="Confirm Password"
-                        />
-                    </FormControl>
                     <Button
                         sx={{
                             marginTop: 3,
                             borderRadius: 1,
-                            width: 400,
                             height: 35,
+                            width: "400px",
                         }}
                         variant="contained"
                         color="warning"
                         type="submit"
                     >
-                        Sign Up
+                        Login
                     </Button>
-                    <Link to={routesConfig.login} style={{ textDecoration: "none" }}>
+                    <Button
+                        onClick={handleLoginGoogle}
+                        sx={{
+                            marginTop: 3,
+                            borderRadius: 1,
+                            height: 35,
+                            width: "400px",
+                        }}
+                        variant="contained"
+                        color="warning"
+                    >
+                        Login with google
+                    </Button>
+                    <Link to={routesConfig.signup} style={{ textDecoration: "none" }}>
                         <Button
                             sx={{
                                 marginTop: 3,
                                 borderRadius: 3,
                             }}
                         >
-                            Back to login
+                            Change to signup
                         </Button>
+                    </Link>
+                    <Link to={routesConfig.home} className={styles.back_to_home}>
+                        Back to Home
                     </Link>
                 </Box>
             </ValidatorForm>
@@ -190,4 +160,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Login;

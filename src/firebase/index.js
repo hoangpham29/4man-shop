@@ -1,16 +1,14 @@
-//Import the functions you need from the SDKs you need
-
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDmRgahwbq4Z8niY9DaRxS9HESV68Is-xA",
-    authDomain: "man-shop-7b7f3.firebaseapp.com",
-    projectId: "man-shop-7b7f3",
-    storageBucket: "man-shop-7b7f3.appspot.com",
-    messagingSenderId: "190600680521",
-    appId: "1:190600680521:web:a03c17568fa3842d9f9b98",
-    measurementId: "G-ZE49FVMFN1",
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDERID,
+    appId: process.env.REACT_APP_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
