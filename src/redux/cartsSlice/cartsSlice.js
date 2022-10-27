@@ -18,13 +18,8 @@ const cartsSlice = createSlice({
             }
         },
         deleteCart: (state, action) => {
-            return {
-                ...state,
-                numberCart: state.carts.length,
-                carts: state.carts.filter((item) => {
-                    return item.id !== action.payload.id;
-                }),
-            };
+            const itemCart = state.carts.filter((item) => item.id !== action.payload.id);
+            state.carts = itemCart;
         },
         increaseQuantity: (state, action) => {
             const newCart = state.carts.map((item) =>
@@ -35,11 +30,7 @@ const cartsSlice = createSlice({
                       }
                     : item
             );
-
-            return {
-                ...state,
-                carts: newCart,
-            };
+            state.carts = newCart;
         },
         decreaseQuantity: (state, action) => {
             const _newCart = state.carts.map((item) =>
@@ -50,11 +41,7 @@ const cartsSlice = createSlice({
                       }
                     : item
             );
-
-            return {
-                ...state,
-                carts: _newCart,
-            };
+            state.carts = _newCart;
         },
     },
 });

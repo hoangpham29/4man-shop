@@ -9,10 +9,11 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link } from "react-router-dom";
 import routesConfig from "../../config/routes";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/usersSlice/usersSlice";
 
 const SignUp = () => {
+    const loading = useSelector((state) => state.users.loading);
     const dispatch = useDispatch();
 
     const [values, setValues] = useState({
@@ -161,19 +162,36 @@ const SignUp = () => {
                             label="Confirm Password"
                         />
                     </FormControl>
-                    <Button
-                        sx={{
-                            marginTop: 3,
-                            borderRadius: 1,
-                            width: 400,
-                            height: 35,
-                        }}
-                        variant="contained"
-                        color="warning"
-                        type="submit"
-                    >
-                        Sign Up
-                    </Button>
+
+                    {loading ? (
+                        <Button
+                            sx={{
+                                marginTop: 3,
+                                borderRadius: 1,
+                                height: 35,
+                                width: "400px",
+                            }}
+                            disabled
+                            variant="outlined"
+                        >
+                            Sign Up
+                        </Button>
+                    ) : (
+                        <Button
+                            sx={{
+                                marginTop: 3,
+                                borderRadius: 1,
+                                width: 400,
+                                height: 35,
+                            }}
+                            variant="contained"
+                            color="warning"
+                            type="submit"
+                        >
+                            Sign Up
+                        </Button>
+                    )}
+
                     <Link to={routesConfig.login} style={{ textDecoration: "none" }}>
                         <Button
                             sx={{
