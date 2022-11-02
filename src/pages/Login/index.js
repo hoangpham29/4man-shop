@@ -6,14 +6,13 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import GoogleIcon from "@mui/icons-material/Google";
 import { Link, useNavigate } from "react-router-dom";
 import routesConfig from "../../config/routes";
 import styles from "./login.module.scss";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/usersSlice/usersSlice";
+import { login, loginWithGoogle } from "../../redux/usersSlice/usersSlice";
 
 const Login = () => {
   const user = useSelector((state) => state.users.user);
@@ -38,25 +37,11 @@ const Login = () => {
     });
   };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const handleMouseDownPassword = (event) => event.preventDefault();
 
-  const handleSubmit = () => {
-    dispatch(login(values));
-  };
+  const handleSubmit = () => dispatch(login(values));
 
-  const handleLoginGoogle = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const profilePic = result.user.photoURL;
-        localStorage.setItem("user", profilePic);
-        navigate("/");
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
+  const handleLoginGoogle = () => dispatch(loginWithGoogle());
 
   useEffect(() => {
     if (user) {
@@ -159,6 +144,7 @@ const Login = () => {
             variant="contained"
             color="warning"
           >
+            <GoogleIcon sx={{ marginRight: 1 }} />
             Login with google
           </Button>
           <Link to={routesConfig.signup} style={{ textDecoration: "none" }}>

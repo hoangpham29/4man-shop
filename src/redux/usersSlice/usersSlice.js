@@ -3,8 +3,9 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, provider } from "../../firebase";
 import toastr from "toastr";
+import { signInWithPopup } from "firebase/auth";
 import AUTH_ERROR_CODE from "../../utils/auth_error_code";
 
 const usersSlice = createSlice({
@@ -41,16 +42,35 @@ const usersSlice = createSlice({
         state.loading = false;
         state.error = action.error.code;
         toastr.error(AUTH_ERROR_CODE[state.error]);
+      })
+      .addCase(loginWithGoogle.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = {
+          name: action.payload.user.displayName,
+          email: action.payload.user.email,
+          avatar: action.payload.user.photoURL,
+        };
+      })
+      .addCase(loginWithGoogle.rejected, (state) => {
+        state.loading = false;
+        toastr.error("ERROR");
       });
   },
 });
 
 export const register = createAsyncThunk("/signup", async (data) => {
-  await createUserWithEmailAndPassword(auth, data.email, data.password);
+  return await createUserWithEmailAndPassword(auth, data.email, data.password);
 });
 
 export const login = createAsyncThunk("/login", async (data) => {
-  await signInWithEmailAndPassword(auth, data.email, data.password);
+  return await signInWithEmailAndPassword(auth, data.email, data.password);
 });
+
+export const loginWithGoogle = createAsyncThunk(
+  "/loginwithgoogle",
+  async () => {
+    return await signInWithPopup(auth, provider);
+  }
+);
 
 export default usersSlice;
