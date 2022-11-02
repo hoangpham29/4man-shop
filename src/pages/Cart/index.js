@@ -10,18 +10,21 @@ import { formatPrice } from "../../utils/auth_error_code";
 
 const Cart = () => {
   const carts = useSelector((state) => state.carts.carts);
-  const total = carts
-    .map((itemCart) => itemCart.cost * itemCart.quantity)
-    .reduce((prev, curr) => prev + curr);
+
+  const total = carts.reduce((sum, item) => sum + item.cost * item.quantity, 0);
+
   const dispatch = useDispatch();
+
   const hanldeDeleteCart = (id) =>
     dispatch(cartsSlice.actions.deleteCart({ id }));
+
   const decreaseQuantity = (id, quantity) => {
     if (quantity === 1) {
       return;
     }
     dispatch(cartsSlice.actions.decreaseQuantity({ id, quantity }));
   };
+
   const increaseQuantity = (id) =>
     dispatch(cartsSlice.actions.increaseQuantity({ id }));
 
@@ -83,6 +86,7 @@ const Cart = () => {
             ))}
           </tbody>
         </table>
+
         <div className={styles.checkout}>
           <div className={styles.txt_total}>
             <span>Total: </span>

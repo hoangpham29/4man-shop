@@ -9,14 +9,12 @@ const Payment = () => {
   const [clientSecret, setClientSecret] = useState("");
 
   const getClientSecret = async () => {
-    const { data } = await axios.post(
-      "http://localhost:5252/create-Payment-intent"
-    );
+    const { data } = await axios.post(process.env.REACT_APP_GET_CLISECRET);
     setClientSecret(data.clientSecret);
   };
 
   const getPublishableKey = async () => {
-    const { data } = await axios.get("http://localhost:5252/config");
+    const { data } = await axios.get(process.env.REACT_APP_GET_PUBKEY);
     setStripePromise(loadStripe(data.publishableKey));
   };
 

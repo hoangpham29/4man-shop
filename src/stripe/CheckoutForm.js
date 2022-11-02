@@ -22,7 +22,7 @@ const CheckoutForm = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:3000/cart",
+        return_url: process.env.REACT_APP_URL_CART,
       },
     });
 

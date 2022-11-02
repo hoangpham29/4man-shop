@@ -4,8 +4,10 @@ const AUTH_ERROR_CODE = {
   "auth/too-many-requests": "The operation is too fast, please try again!",
   "auth/email-already-in-use": "Email already exists!",
 };
+
 export const formatPrice = new Intl.NumberFormat("vi-VN", {
   style: "currency",
   currency: "VND",
 });
+
 export default AUTH_ERROR_CODE;
