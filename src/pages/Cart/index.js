@@ -113,7 +113,7 @@ const Cart = () => {
                 disabled
                 variant="contained"
               >
-                Disabled
+                Checkout
               </Button>
             )}
           </Link>
