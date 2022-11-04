@@ -5,6 +5,9 @@ const AUTH_ERROR_CODE = {
   "auth/email-already-in-use": "Email already exists!",
 };
 
+export const card_error = "card_error";
+export const validation_error = "validation_ error";
+
 export const formatPrice = new Intl.NumberFormat("vi-VN", {
   style: "currency",
   currency: "VND",

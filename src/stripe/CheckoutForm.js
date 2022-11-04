@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { PaymentElement } from "@stripe/react-stripe-js";
 import styles from "./checkoutForm.module.scss";
+import toastr from "toastr";
+import { card_error, validation_error } from "../utils/auth_error_code";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [message, setMessage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -26,10 +27,10 @@ const CheckoutForm = () => {
       },
     });
 
-    if (error.type === "card_error" || error.type === "validation_ error") {
-      setMessage(error.message);
+    if (error.type === card_error || error.type === validation_error) {
+      toastr.error(error.message);
     } else {
-      setMessage("An unexpected error occurred");
+      toastr.error("An unexpected error occurred");
     }
 
     setIsProcessing(false);
@@ -44,7 +45,6 @@ const CheckoutForm = () => {
             {isProcessing ? "Processing ..." : "Pay now"}
           </span>
         </button>
-        {message && <div id="payment-message">{message}</div>}
       </form>
     </div>
   );

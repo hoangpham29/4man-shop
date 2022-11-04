@@ -51,6 +51,9 @@ const cartsSlice = createSlice({
       );
       state.carts = _newCart;
     },
+    clearCart: (state) => {
+      state.carts = [];
+    },
   },
 });
 

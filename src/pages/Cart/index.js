@@ -1,19 +1,29 @@
-import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import styles from "./cart.module.scss";
 import cartsSlice from "../../redux/cartsSlice/cartsSlice";
 import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { formatPrice } from "../../utils/auth_error_code";
+import { useEffect } from "react";
+import toastr from "toastr";
 
 const Cart = () => {
+  const dispatch = useDispatch();
+
+  const [searchParams] = useSearchParams();
+
   const carts = useSelector((state) => state.carts.carts);
 
   const total = carts.reduce((sum, item) => sum + item.cost * item.quantity, 0);
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (searchParams.get("redirect_status") === "succeeded") {
+      dispatch(cartsSlice.actions.clearCart());
+      toastr.success("Payment success!");
+    }
+  }, [dispatch, searchParams]);
 
   const hanldeDeleteCart = (id) =>
     dispatch(cartsSlice.actions.deleteCart({ id }));
@@ -93,9 +103,19 @@ const Cart = () => {
             {formatPrice.format(total)}
           </div>
           <Link to={"/checkout"}>
-            <Button className={styles.btn_checkout} variant="contained">
-              Checkout
-            </Button>
+            {total > 0 ? (
+              <Button className={styles.btn_checkout} variant="contained">
+                Checkout
+              </Button>
+            ) : (
+              <Button
+                sx={{ width: "150px", height: "40px", fontSize: "13px" }}
+                disabled
+                variant="contained"
+              >
+                Disabled
+              </Button>
+            )}
           </Link>
         </div>
       </div>
