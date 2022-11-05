@@ -6,6 +6,7 @@ const routes = {
   login: "/login",
   signup: "/signup",
   checkout: "/checkout",
+  payment: "/payment",
 };
 
 export default routes;

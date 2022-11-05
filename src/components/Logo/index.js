@@ -3,7 +3,7 @@ import fourmanLogo from "../../assets/images/logo.png";
 const Logo = () => {
     return (
         <div>
-            <img src={fourmanLogo} alt="" />
+            <img style={{width: "60px"}} src={fourmanLogo} alt="" />
         </div>
     );
 };

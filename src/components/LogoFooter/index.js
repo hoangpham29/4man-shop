@@ -1,9 +1,9 @@
-import logoFooter from "../../assets/images/logoFooter.png";
+import logoFooter from "../../assets/images/LogoFooter.png";
 
 const LogoFooter = () => {
     return (
         <div>
-            <img src={logoFooter} alt="" />
+            <img style={{width: "90px"}} src={logoFooter} alt="" />
         </div>
     );
 };
