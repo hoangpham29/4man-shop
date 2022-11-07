@@ -15,7 +15,7 @@ const Products = () => {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const count = Math.ceil(items.length / 20);
+  const count = Math.ceil(items.length / 12);
 
   useEffect(() => {
     request
@@ -28,8 +28,8 @@ const Products = () => {
       });
   }, []);
 
-  const indexOfLastProduct = currentPage * 20;
-  const indexOfFirstProduct = indexOfLastProduct - 20;
+  const indexOfLastProduct = currentPage * 12;
+  const indexOfFirstProduct = indexOfLastProduct - 12;
 
   const products = items.slice(indexOfFirstProduct, indexOfLastProduct);
 
@@ -43,6 +43,7 @@ const Products = () => {
 
   return (
     <div>
+      <div className={styles.text}>THỜI TRANG</div>
       <div className={styles.wrapper}>
         {products.map((item) => (
           <div key={item.id} className={styles.wrap_product}>

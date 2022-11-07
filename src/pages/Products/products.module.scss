@@ -8,6 +8,15 @@
   margin-top: 20px;
 }
 
+.text {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 23px;
+  color: #333;
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 1023px) and (min-width: 840px) {
   .wrapper {
     display: grid;
@@ -17,10 +26,28 @@
   }
 }
 
-@media screen and (max-width: 839px) {
+@media screen and (max-width: 839px) and (min-width: 420px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 419px) {
   .wrapper {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 15px;
+
+    .wrap_product {
+      width: 180px;
+
+      .img_product {
+        width: 100%;
+      }
+    }
   }
 }
 

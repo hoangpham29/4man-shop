@@ -8,3 +8,20 @@
 .back_to_home:hover {
   color: rgb(255, 56, 56);
 }
+
+@media screen and (max-width: 419px) {
+  .wrapper {
+    width: 93%;
+
+    .input_email {
+      width: 310px;
+    }
+
+    .input_password {
+      width: 310px;
+    }
+    .button {
+      width: 310px;
+    }
+  }
+}

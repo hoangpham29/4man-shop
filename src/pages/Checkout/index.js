@@ -1,9 +1,10 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
 import { Button } from "@mui/material";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import styles from "./checkout.module.scss";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
   const [value, setValues] = useState("+84");
@@ -57,14 +58,21 @@ const Checkout = () => {
         className={styles.input_phone}
       />
 
-      <Button
-        className={styles.btn_checkout}
-        type="submit"
-        variant="contained"
-        sx={{ mt: 2 }}
-      >
-        Checkout
-      </Button>
+      <label>Address:</label>
+      <OutlinedInput
+        className={styles.input_info}
+        {...register("address", {
+          required: true,
+        })}
+        placeholder="Address"
+      />
+      {errors.address?.type === "required" && <p>Adress is required!</p>}
+
+      <Link to="/payment">
+        <Button className={styles.btn_checkout} variant="contained">
+          Checkout
+        </Button>
+      </Link>
     </form>
   );
 };

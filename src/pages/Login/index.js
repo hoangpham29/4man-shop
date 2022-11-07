@@ -53,6 +53,7 @@ const Login = () => {
     <div>
       <ValidatorForm onSubmit={handleSubmit}>
         <Box
+          className={styles.wrapper}
           display="flex"
           flexDirection={"column"}
           justifyContent={"center"}
@@ -68,6 +69,7 @@ const Login = () => {
             Login
           </Typography>
           <TextValidator
+            className={styles.input_email}
             sx={{ width: "400px" }}
             margin="normal"
             label="Email"
@@ -78,6 +80,7 @@ const Login = () => {
           />
           <FormControl sx={{ m: 1 }} variant="outlined">
             <TextValidator
+              className={styles.input_password}
               sx={{ width: "400px" }}
               type={values.showPassword ? "text" : "password"}
               value={values.password}
@@ -106,6 +109,7 @@ const Login = () => {
           </FormControl>
           {loading ? (
             <Button
+              className={styles.button}
               sx={{
                 marginTop: 3,
                 borderRadius: 1,
@@ -119,6 +123,7 @@ const Login = () => {
             </Button>
           ) : (
             <Button
+              className={styles.button}
               sx={{
                 marginTop: 3,
                 borderRadius: 1,
@@ -134,6 +139,7 @@ const Login = () => {
           )}
 
           <Button
+            className={styles.button}
             onClick={handleLoginGoogle}
             sx={{
               marginTop: 3,

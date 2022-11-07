@@ -11,6 +11,7 @@ import routesConfig from "../../config/routes";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/usersSlice/usersSlice";
+import styles from "./signUp.module.scss";
 
 const SignUp = () => {
   const loading = useSelector((state) => state.users.loading);
@@ -76,6 +77,7 @@ const SignUp = () => {
     <div>
       <ValidatorForm onSubmit={handleSubmit}>
         <Box
+          className={styles.wrapper}
           display="flex"
           flexDirection={"column"}
           justifyContent={"center"}
@@ -92,6 +94,7 @@ const SignUp = () => {
           </Typography>
           <Box mb={-1}>
             <TextValidator
+              className={styles.input}
               sx={{ width: 400 }}
               margin="normal"
               label="Name"
@@ -103,6 +106,7 @@ const SignUp = () => {
           </Box>
           <Box>
             <TextValidator
+              className={styles.input}
               sx={{ width: 400 }}
               margin="normal"
               label="Email"
@@ -114,6 +118,7 @@ const SignUp = () => {
           </Box>
           <FormControl sx={{ m: 1 }} variant="outlined">
             <TextValidator
+              className={styles.input}
               sx={{ width: 400 }}
               type={values.showPassword ? "text" : "password"}
               value={values.password}
@@ -141,6 +146,7 @@ const SignUp = () => {
           </FormControl>
           <FormControl sx={{ m: 1 }} variant="outlined">
             <TextValidator
+              className={styles.input}
               sx={{ width: 400 }}
               type={values.showConfirmPassword ? "text" : "password"}
               value={values.confirmpassword}
@@ -170,6 +176,7 @@ const SignUp = () => {
 
           {loading ? (
             <Button
+              className={styles.button}
               sx={{
                 marginTop: 3,
                 borderRadius: 1,
@@ -183,6 +190,7 @@ const SignUp = () => {
             </Button>
           ) : (
             <Button
+              className={styles.button}
               sx={{
                 marginTop: 3,
                 borderRadius: 1,
@@ -199,6 +207,7 @@ const SignUp = () => {
 
           <Link to={routesConfig.login} style={{ textDecoration: "none" }}>
             <Button
+              className={styles.button}
               sx={{
                 marginTop: 3,
                 borderRadius: 3,

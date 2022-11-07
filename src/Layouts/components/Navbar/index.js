@@ -121,7 +121,9 @@ const Navbar = () => {
         <Toolbar className={`${styles.container} ${styles.navbar}`}>
           {isMatch ? (
             <div className={styles.container_mb}>
-              <Logo className={styles.logo_navbar} />
+              <Link to="/">
+                <Logo className={styles.logo_navbar} />
+              </Link>
               <div className={styles.icon_mb}>
                 <div className={styles.navIcon}>
                   <IconButton
@@ -132,6 +134,45 @@ const Navbar = () => {
                   >
                     <SearchIcon className={styles.icon} />
                   </IconButton>
+                </div>
+
+                <div className={styles.navIcon}>
+                  <Link to={routesConfig.cart}>
+                    <Badge badgeContent={numberCart} color="error">
+                      <IconButton
+                        className={styles.btnIcon}
+                        size="large"
+                        aria-label="ShoppingCartIcon"
+                        color="secondary"
+                      >
+                        <ShoppingCartIcon className={styles.icon} />
+                      </IconButton>
+                    </Badge>
+                  </Link>
+                </div>
+
+                <div className={styles.navIcon}>
+                  {user ? (
+                    <IconButton
+                      onClick={handleLogout}
+                      className={styles.btnIcon}
+                      size="large"
+                      aria-label="search"
+                      color="secondary"
+                    >
+                      <LoginIcon className={styles.icon} />
+                    </IconButton>
+                  ) : (
+                    <IconButton
+                      className={styles.btnIcon}
+                      size="large"
+                      aria-label="search"
+                      color="secondary"
+                      onClick={handleProfileMenuOpen}
+                    >
+                      <PersonIcon className={styles.icon} />
+                    </IconButton>
+                  )}
                 </div>
                 <div>
                   <DrawerComp />
