@@ -8,6 +8,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { formatPrice } from "../../utils/auth_error_code";
 import { useEffect } from "react";
 import toastr from "toastr";
+import { succeeded } from "../../utils/auth_error_code";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Cart = () => {
   const total = carts.reduce((sum, item) => sum + item.cost * item.quantity, 0);
 
   useEffect(() => {
-    if (searchParams.get("redirect_status") === "succeeded") {
+    if (searchParams.get("redirect_status") === succeeded) {
       dispatch(cartsSlice.actions.clearCart());
       toastr.success("Payment success!");
     }

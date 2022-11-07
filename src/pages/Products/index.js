@@ -15,7 +15,9 @@ const Products = () => {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const count = Math.ceil(items.length / 12);
+  const limitedProduct = 12;
+
+  const count = Math.ceil(items.length / limitedProduct);
 
   useEffect(() => {
     request
@@ -28,8 +30,8 @@ const Products = () => {
       });
   }, []);
 
-  const indexOfLastProduct = currentPage * 12;
-  const indexOfFirstProduct = indexOfLastProduct - 12;
+  const indexOfLastProduct = currentPage * limitedProduct;
+  const indexOfFirstProduct = indexOfLastProduct - limitedProduct;
 
   const products = items.slice(indexOfFirstProduct, indexOfLastProduct);
 

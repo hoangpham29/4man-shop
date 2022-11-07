@@ -12,18 +12,19 @@ const Item = () => {
 
   const [items, setItems] = useState([]);
 
+  const indexOfLastProduct = 0;
+  const indexOfFirstProduct = 8;
+
   useEffect(() => {
     request
       .get("/hotclothes")
       .then((res) => {
         setItems(res.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }, []);
 
-  const products = items.slice(0, 8);
+  const products = items.slice(indexOfLastProduct, indexOfFirstProduct);
 
   const hanldeAddCart = (product) => {
     dispatch(cartsSlice.actions.addCart(product));
