@@ -11,10 +11,8 @@ const Checkout = () => {
 
   const handleChange = (newValue) => {
     setValues(newValue);
+    matchIsValidTel(value);
   };
-
-  const errorPhone = matchIsValidTel(value);
-  console.log(errorPhone);
 
   const {
     register,
@@ -22,7 +20,7 @@ const Checkout = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(JSON.stringify(data));
+  const onSubmit = (data) => {};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.wrapper}>
@@ -38,6 +36,7 @@ const Checkout = () => {
         placeholder="Name"
       />
       {errors?.name?.type === "required" && <p>Name is required!</p>}
+
       <label>Email:</label>
       <OutlinedInput
         className={styles.input_info}
@@ -50,8 +49,8 @@ const Checkout = () => {
       />
       {errors.email?.type === "required" && <p>Email is required!</p>}
       {errors.email?.type === "pattern" && <p>Invalid Email Address!</p>}
-      <label>Phone Number:</label>
 
+      <label>Phone Number:</label>
       <MuiTelInput
         value={value}
         onChange={handleChange}

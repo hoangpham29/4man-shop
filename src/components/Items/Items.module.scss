@@ -7,16 +7,7 @@
   margin-bottom: 50px;
 }
 
-@media screen and (max-width: 1023px) and (min-width: 840px) {
-  .wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    max-height: 895px;
-    overflow: hidden;
-  }
-}
-
-@media screen and (max-width: 839px) and (min-width: 420px) {
+@media screen and (max-width: 1023px) and (min-width: 420px) {
   .wrapper {
     display: grid;
     grid-template-columns: auto auto auto;

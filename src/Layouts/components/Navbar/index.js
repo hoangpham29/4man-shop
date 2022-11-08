@@ -122,7 +122,7 @@ const Navbar = () => {
           {isMatch ? (
             <div className={styles.container_mb}>
               <Link to="/">
-                <Logo className={styles.logo_navbar} />
+                <Logo />
               </Link>
               <div className={styles.icon_mb}>
                 <div className={styles.navIcon}>
@@ -182,7 +182,7 @@ const Navbar = () => {
           ) : (
             <>
               <Link to={routesConfig.home}>
-                <Logo className={styles.logo_navbar} />
+                <Logo />
               </Link>
               <ul className={styles.navbarList}>
                 {PAGES.map((page, index) => (

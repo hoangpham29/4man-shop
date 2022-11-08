@@ -6,41 +6,36 @@
   justify-content: center;
 }
 
-.header .navbar {
+.navbar {
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
 }
 
-.header .navbarLogo {
-  font-size: 18px;
-  line-height: 20px;
-}
-
-.header .navbarList {
+.navbarList {
   display: flex;
   list-style: none;
+
+  .dropdown {
+    font-size: 15px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    color: #333;
+    text-decoration: none;
+    margin-left: 20px;
+  }
 }
 
-.header .navbarList .dropdown {
-  font-size: 15px;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  color: #333;
-  text-decoration: none;
-  margin-left: 20px;
-}
-
-.header .navIcon {
+.navIcon {
   position: relative;
-}
 
-.header .navIcon .btnIcon {
-  background-color: #ededed;
-  color: #a04242;
-  border-radius: 5px;
-  margin: 0px 0px 0px 5px;
-  width: 32px;
-  height: 32px;
+  .btnIcon {
+    background-color: #ededed;
+    color: #a04242;
+    border-radius: 5px;
+    margin: 0px 0px 0px 5px;
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .header .navIcon .btnIcon .icon {
@@ -68,6 +63,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .logo_navbar {
+    img {
+      width: 60px;
+    }
+  }
 }
 
 .icon_mb {

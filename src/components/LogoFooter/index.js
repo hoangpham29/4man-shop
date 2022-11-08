@@ -1,9 +1,10 @@
 import logoFooter from "../../assets/images/logoFooter.png";
+import styles from "./logoFooter.module.scss";
 
 const LogoFooter = () => {
   return (
     <div>
-      <img style={{ width: "90px" }} src={logoFooter} alt="" />
+      <img className={styles.logoFooter} src={logoFooter} alt="" />
     </div>
   );
 };
