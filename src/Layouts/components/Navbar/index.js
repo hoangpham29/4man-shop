@@ -26,12 +26,12 @@ import { useDispatch, useSelector } from "react-redux";
 import usersSlice from "../../../redux/usersSlice/usersSlice";
 
 const PAGES = [
-  "HÀNG MỚI",
-  "ÁO NAM",
-  "QUẦN NAM",
-  "PHỤ KIỆN",
-  "GIÀY DÉP",
-  "KHUYẾN MÃI",
+  "NEW PRODUCTS",
+  "MENS SHIRT",
+  "MALE PANTS",
+  "ACCESSORY",
+  "FOOTWEAR",
+  "PROMOTION",
 ];
 
 const Search = styled("div")(({ theme }) => ({

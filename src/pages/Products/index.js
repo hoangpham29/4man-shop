@@ -25,9 +25,7 @@ const Products = () => {
       .then((res) => {
         setItems(res.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }, []);
 
   const indexOfLastProduct = currentPage * limitedProduct;

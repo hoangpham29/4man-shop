@@ -4,14 +4,16 @@ import IconButton from "@mui/material/IconButton";
 import styles from "./cart.module.scss";
 import cartsSlice from "../../redux/cartsSlice/cartsSlice";
 import { Button } from "@mui/material";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { formatPrice } from "../../utils/auth_error_code";
 import { useEffect } from "react";
 import toastr from "toastr";
 import { succeeded } from "../../utils/auth_error_code";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
 
@@ -45,8 +47,9 @@ const Cart = () => {
         <table>
           <tbody>
             <tr className={styles.title_cart}>
-              <th>Product</th>
-              <th>Image</th>
+              <th className={styles.title_name} colSpan={2}>
+                Product
+              </th>
               <th>Quantity</th>
               <th>Price</th>
               <th>Subtotal</th>
@@ -57,9 +60,15 @@ const Cart = () => {
           <tbody>
             {carts.map((cart) => (
               <tr className={styles.cart_products} key={cart.id}>
-                <td className={styles.name_product}>{cart.name}</td>
-                <td>
-                  <img className={styles.img} src={cart.image} alt="product" />
+                <td className={styles.name_product} colSpan={2}>
+                  <div className={styles.wrap_name_img}>
+                    <img
+                      className={styles.wrap_name_img_img}
+                      src={cart.image}
+                      alt="product"
+                    />
+                    <div className={styles.wrap_name_img_name}>{cart.name}</div>
+                  </div>
                 </td>
                 <td>
                   <div className={styles.quantity_cart}>
@@ -80,7 +89,7 @@ const Cart = () => {
                 </td>
                 <td>{formatPrice.format(cart.price)}</td>
                 <td>
-                  <p style={{ width: 100, marginInline: "auto" }}>
+                  <p className={styles.sub_total}>
                     {formatPrice.format(cart.quantity * cart.price)}
                   </p>
                 </td>
@@ -103,21 +112,15 @@ const Cart = () => {
             <span>Total: </span>
             {formatPrice.format(total)}
           </div>
-          <Link to={"/checkout"}>
-            {total > 0 ? (
-              <Button className={styles.btn_checkout} variant="contained">
-                Checkout
-              </Button>
-            ) : (
-              <Button
-                sx={{ width: "150px", height: "40px", fontSize: "13px" }}
-                disabled
-                variant="contained"
-              >
-                Checkout
-              </Button>
-            )}
-          </Link>
+
+          <Button
+            disabled={total === 0}
+            className={`${styles.btn_checkout} ${total ? styles.disabled : ""}`}
+            variant="contained"
+            onClick={() => navigate("/checkout")}
+          >
+            Checkout
+          </Button>
         </div>
       </div>
     </div>
