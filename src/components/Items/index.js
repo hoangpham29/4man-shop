@@ -6,11 +6,14 @@ import routesConfig from "../../config/routes";
 import { useDispatch } from "react-redux";
 import styles from "./Items.module.scss";
 import cartsSlice from "../../redux/cartsSlice/cartsSlice";
+import Skeleton from "@mui/material/Skeleton";
+import toastr from "toastr";
 
 const Item = () => {
   const dispatch = useDispatch();
 
   const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const indexOfLastProduct = 8;
   const indexOfFirstProduct = 0;
@@ -20,6 +23,7 @@ const Item = () => {
       .get("/hotclothes")
       .then((res) => {
         setItems(res.data);
+        setIsLoading(false);
       })
       .catch((err) => {});
   }, []);
@@ -28,45 +32,52 @@ const Item = () => {
 
   const hanldeAddCart = (product) => {
     dispatch(cartsSlice.actions.addCart(product));
+    toastr.success("Add to cart successfully!");
   };
 
   return (
-    <div className={styles.wrapper}>
-      {products.map((item) => (
-        <div key={item.id} className={styles.wrap_product}>
-          <div className={styles.container}>
-            <img
-              className={styles.img_product}
-              src={item.image}
-              width={250}
-              alt="product"
-            />
-            <div
-              className={styles.add_cart}
-              onClick={() => hanldeAddCart(item)}
-            >
-              <AddShoppingCartIcon />
+    <>
+      {isLoading ? (
+        <Skeleton sx={{ minHeight: 700 }} />
+      ) : (
+        <div className={styles.wrapper}>
+          {products.map((item) => (
+            <div key={item.id} className={styles.wrap_product}>
+              <div className={styles.container}>
+                <img
+                  className={styles.img_product}
+                  src={item.image}
+                  width={250}
+                  alt="product"
+                />
+                <div
+                  className={styles.add_cart}
+                  onClick={() => hanldeAddCart(item)}
+                >
+                  <AddShoppingCartIcon />
+                </div>
+              </div>
+              <div className={styles.parent_avt_product}>
+                <img
+                  className={styles.avt_product}
+                  src={item.image}
+                  alt="product"
+                />
+              </div>
+              <div>
+                <Link
+                  to={routesConfig.products + "/" + item.id}
+                  className={styles.name_product}
+                >
+                  {item.name}{" "}
+                </Link>
+                <div className={styles.cost_product}>{item.cost} </div>
+              </div>
             </div>
-          </div>
-          <div className={styles.parent_avt_product}>
-            <img
-              className={styles.avt_product}
-              src={item.image}
-              alt="product"
-            />
-          </div>
-          <div>
-            <Link
-              to={routesConfig.products + "/" + item.id}
-              className={styles.name_product}
-            >
-              {item.name}{" "}
-            </Link>
-            <div className={styles.cost_product}>{item.cost} </div>
-          </div>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 };
 

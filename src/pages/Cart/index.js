@@ -7,7 +7,6 @@ import { Button } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
 import { formatPrice } from "../../utils/auth_error_code";
 import { useEffect } from "react";
-import toastr from "toastr";
 import { succeeded } from "../../utils/auth_error_code";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +23,6 @@ const Cart = () => {
   useEffect(() => {
     if (searchParams.get("redirect_status") === succeeded) {
       dispatch(cartsSlice.actions.clearCart());
-      toastr.success("Payment success!");
     }
   }, [dispatch, searchParams]);
 

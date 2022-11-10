@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import Counter from "../Counter";
+import Counter from "../../components/Counter";
 import request from "../../utils/request";
 import styles from "./DetailProduct.module.scss";
 
