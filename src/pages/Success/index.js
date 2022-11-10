@@ -2,10 +2,24 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./success.module.scss";
+import { succeeded } from "../../utils/auth_error_code";
+import { useSearchParams } from "react-router-dom";
+import cartsSlice from "../../redux/cartsSlice/cartsSlice";
+import { useDispatch } from "react-redux";
 
 const Success = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [count, setCount] = useState(12);
+
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("redirect_status") === succeeded) {
+      dispatch(cartsSlice.actions.clearCart());
+    }
+  }, [dispatch, searchParams]);
 
   useEffect(() => {
     const timerId = setInterval(() => {
