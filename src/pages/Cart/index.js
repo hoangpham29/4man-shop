@@ -4,27 +4,16 @@ import IconButton from "@mui/material/IconButton";
 import styles from "./cart.module.scss";
 import cartsSlice from "../../redux/cartsSlice/cartsSlice";
 import { Button } from "@mui/material";
-import { useSearchParams } from "react-router-dom";
 import { formatPrice } from "../../utils/auth_error_code";
-import { useEffect } from "react";
-import { succeeded } from "../../utils/auth_error_code";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [searchParams] = useSearchParams();
-
   const carts = useSelector((state) => state.carts.carts);
 
   const total = carts.reduce((sum, item) => sum + item.cost * item.quantity, 0);
-
-  useEffect(() => {
-    if (searchParams.get("redirect_status") === succeeded) {
-      dispatch(cartsSlice.actions.clearCart());
-    }
-  }, [dispatch, searchParams]);
 
   const hanldeDeleteCart = (id) =>
     dispatch(cartsSlice.actions.deleteCart({ id }));

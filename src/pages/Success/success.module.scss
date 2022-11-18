@@ -3,6 +3,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
 }
 .wrapper_2 {
   padding: 30px;
@@ -10,17 +11,17 @@
 
   .go_home {
     color: #fff;
-    background: #b31f2a;
+    background: #14a81c;
     border: none;
     padding: 10px 50px;
     margin: 30px 0;
     border-radius: 30px;
     text-transform: capitalize;
-    box-shadow: 0 10px 16px 1px rgb(245, 163, 163);
+    box-shadow: 0 10px 16px 1px rgb(163, 163, 163);
 
     &:hover {
-      background: #8e2c32;
-      box-shadow: 0 10px 16px 1px rgb(245, 163, 163);
+      background: #0b520f;
+      box-shadow: 0 10px 16px 1px rgb(163, 163, 163);
     }
   }
 }
@@ -28,7 +29,7 @@ h1 {
   font-family: "Kaushan Script", cursive;
   font-size: 4em;
   letter-spacing: 3px;
-  color: #b31f2a;
+  color: #14a81c;
   margin: 0;
   margin-bottom: 20px;
   font-style: italic;
@@ -43,24 +44,36 @@ h1 {
 
 .footer_like {
   margin-top: auto;
-  background: #fed7d7;
+  background: rgb(178, 245, 163);
   padding: 6px;
   text-align: center;
+  border-radius: 0px 0px 10px 10px;
 }
 .footer_like p {
   margin: 0;
   padding: 4px;
-  color: #b31f2a;
+  color: #333;
   font-family: "Source Sans Pro", sans-serif;
   letter-spacing: 1px;
 }
 .footer_like p a {
   text-decoration: none;
-  color: #b31f2a;
+  color: #333;
   font-weight: 600;
 }
 
-@media (min-width: 360px) {
+@media screen and (max-width: 480px) {
+  .wrapper_1 {
+    height: 60vh;
+  }
+
+  .footer_like {
+    margin-top: 10px;
+    background: none;
+  }
+}
+
+@media (min-width: 480px) {
   h1 {
     font-size: 4.5em;
   }
@@ -79,6 +92,6 @@ h1 {
     max-width: 620px;
     margin: 0 auto;
     margin-top: 50px;
-    box-shadow: 4px 8px 40px 8px rgba(255, 88, 88, 0.2);
+    box-shadow: 4px 8px 40px 8px rgb(163, 163, 163);
   }
 }

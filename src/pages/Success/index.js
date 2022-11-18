@@ -37,7 +37,7 @@ const Success = () => {
     <div className={styles.content}>
       <div className={styles.wrapper_1}>
         <div className={styles.wrapper_2}>
-          <h1>Thank you !</h1>
+          <h1>Success!</h1>
           <p>Thank you for purchasing our products!</p>
           <Button
             className={styles.go_home}
