@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   carts: [],
-  numberCart: 0,
+  loading: false,
 };
 
 const cartsSlice = createSlice({
@@ -14,13 +14,9 @@ const cartsSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       if (itemInCart) {
-        itemInCart.quantity++;
+        itemInCart.quantity += action.payload.quantity;
       } else {
-        state.carts.push({
-          ...action.payload,
-          quantity: 1,
-          price: action.payload.cost,
-        });
+        state.carts.push(action.payload);
       }
     },
     deleteCart: (state, action) => {
@@ -30,26 +26,10 @@ const cartsSlice = createSlice({
       state.carts = itemCart;
     },
     increaseQuantity: (state, action) => {
-      const newCart = state.carts.map((item) =>
-        item.id === action.payload.id
-          ? {
-              ...item,
-              quantity: item.quantity + 1,
-            }
-          : item
-      );
-      state.carts = newCart;
+      state.carts.find((item) => item.id === action.payload).quantity++;
     },
     decreaseQuantity: (state, action) => {
-      const _newCart = state.carts.map((item) =>
-        item.id === action.payload.id
-          ? {
-              ...item,
-              quantity: item.quantity - 1,
-            }
-          : item
-      );
-      state.carts = _newCart;
+      state.carts.find((item) => item.id === action.payload.id).quantity--;
     },
     clearCart: (state) => {
       state.carts = [];

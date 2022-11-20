@@ -1,0 +1,109 @@
+.container {
+  max-width: 1000px;
+  margin-inline: auto;
+  margin-block: 40px;
+  .btn-send {
+    font-weight: bold;
+    font-size: 13px;
+    background-color: #d32f2f;
+    color: white;
+    padding: 12px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    &:hover {
+      background-color: #852424;
+    }
+  }
+}
+
+.wrapper {
+  width: 100%;
+  margin: 50px auto;
+}
+
+.wrapper h1:first-child {
+  color: #333;
+  text-align: center;
+  font-family: sans-serif;
+  font-style: normal;
+  margin-bottom: 50px;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.contact div {
+  text-align: center;
+}
+
+.contact div svg {
+  font-size: 60px;
+  color: #d32f2f;
+}
+
+.contact div h3 {
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.contact div span {
+  font-size: 16px;
+}
+
+.title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.infor-contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.infor-contact input,
+textarea {
+  width: 100%;
+  background-color: #ffffff;
+  border-color: #ebebeb;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  color: #6f6f6f;
+  display: inline-block;
+  font-family: Cairo;
+  line-height: 24px;
+  margin: 0px 0px 30px;
+  outline: none;
+  padding: 15px 10px;
+  resize: none;
+}
+
+@media only screen and (max-width: 390px) {
+  .contact div svg {
+    font-size: 30px;
+  }
+
+  .contact div span {
+    font-size: 11px;
+  }
+
+  .contact div h3 {
+    font-size: 12px;
+  }
+
+  .container {
+    max-width: 360px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    max-width: 720px;
+  }
+}

@@ -11,7 +11,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const carts = useSelector((state) => state.carts.carts);
+  const { carts } = useSelector(({ carts }) => carts);
 
   const total = carts.reduce((sum, item) => sum + item.cost * item.quantity, 0);
 
@@ -25,8 +25,9 @@ const Cart = () => {
     dispatch(cartsSlice.actions.decreaseQuantity({ id, quantity }));
   };
 
-  const increaseQuantity = (id) =>
-    dispatch(cartsSlice.actions.increaseQuantity({ id }));
+  const increaseQuantity = (id) => {
+    dispatch(cartsSlice.actions.increaseQuantity(id));
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -74,10 +75,10 @@ const Cart = () => {
                     </button>
                   </div>
                 </td>
-                <td>{formatPrice.format(cart.price)}</td>
+                <td>{formatPrice.format(cart.cost)}</td>
                 <td>
                   <p className={styles.sub_total}>
-                    {formatPrice.format(cart.quantity * cart.price)}
+                    {formatPrice.format(cart.quantity * cart.cost)}
                   </p>
                 </td>
                 <td>

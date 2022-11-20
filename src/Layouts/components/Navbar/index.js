@@ -25,15 +25,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import usersSlice from "../../../redux/usersSlice/usersSlice";
 
-const PAGES = [
-  "NEW PRODUCTS",
-  "MENS SHIRT",
-  "MALE PANTS",
-  "ACCESSORY",
-  "FOOTWEAR",
-  "PROMOTION",
-];
-
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -185,16 +176,24 @@ const Navbar = () => {
                 <Logo />
               </Link>
               <ul className={styles.navbarList}>
-                {PAGES.map((page, index) => (
-                  <li key={index}>
-                    <Link
-                      to={routesConfig.products}
-                      className={styles.dropdown}
-                    >
-                      {page}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link to={routesConfig.home} className={styles.dropdown}>
+                    HOME
+                  </Link>
+                </li>
+                <li>
+                  <Link to={routesConfig.products} className={styles.dropdown}>
+                    PRODUCTS
+                  </Link>
+                </li>
+                <li>
+                  <Link className={styles.dropdown}>BLOG</Link>
+                </li>
+                <li>
+                  <Link to={routesConfig.contact} className={styles.dropdown}>
+                    CONTACT
+                  </Link>
+                </li>
               </ul>
               <div className={styles.navIcon}>
                 <Link to={routesConfig.cart}>

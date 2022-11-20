@@ -6,13 +6,40 @@ import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import Counter from "../../components/Counter";
 import request from "../../utils/request";
 import styles from "./DetailProduct.module.scss";
+import toastr from "toastr";
+import { useDispatch } from "react-redux";
+import CartSlice from "../../redux/cartsSlice/cartsSlice";
+
+const Btn = ({ children, onClick }) => (
+  <button className={styles.btn_style} onClick={onClick}>
+    {children}
+  </button>
+);
 
 const DetailProduct = () => {
   const { id } = useParams();
   const [item, setItem] = useState([]);
+
+  const dispatch = useDispatch();
+
+  const [counter, updateCounter] = useState(1);
+
+  const handleIncrement = () => {
+    if (counter >= 50) {
+      toastr.warning("You can only choose up to 50 products");
+      return;
+    }
+    updateCounter(counter + 1);
+  };
+
+  const handleDecrement = () => {
+    if (counter <= 1) {
+      return;
+    }
+    updateCounter(counter <= 1 ? 1 : counter - 1);
+  };
 
   const getProduct = async (id) => {
     const { data } = await request.get("/hotclothes/" + id);
@@ -22,6 +49,11 @@ const DetailProduct = () => {
   useEffect(() => {
     getProduct(id);
   }, [id]);
+
+  const handleAddToCart = ({ quantity, ...arg }) => {
+    dispatch(CartSlice.actions.addCart({ ...arg, quantity: counter }));
+    toastr.success("Add to cart successfully");
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -79,8 +111,16 @@ const DetailProduct = () => {
             </div>
             <div className={styles.option_amount}>
               <div className={styles.name_title}>SỐ LƯỢNG *</div>
-              <Counter />
-              <Button className={styles.btn_buy} variant="contained">
+              <div className={styles.wrapper}>
+                <Btn onClick={handleDecrement}>-</Btn>
+                <div className={styles.text_style}>{counter}</div>
+                <Btn onClick={handleIncrement}>+</Btn>
+              </div>
+              <Button
+                onClick={() => handleAddToCart(item)}
+                className={styles.btn_buy}
+                variant="contained"
+              >
                 <AddShoppingCartIcon sx={{ marginRight: "10px" }} />
                 thêm vào giỏ hàng
               </Button>

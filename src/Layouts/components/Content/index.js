@@ -7,6 +7,7 @@ const Content = () => {
             <div className={styles.row}>
                 <div className={styles.text}>THỜI TRANG HOT NHẤT</div>
                 <Items />
+                
             </div>
         </div>
     );

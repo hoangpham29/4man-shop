@@ -31,7 +31,7 @@ const Item = () => {
   const products = items.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const hanldeAddCart = (product) => {
-    dispatch(cartsSlice.actions.addCart(product));
+    dispatch(cartsSlice.actions.addCart({ ...product, quantity: 1 }));
     toastr.success("Add to cart successfully!");
   };
 

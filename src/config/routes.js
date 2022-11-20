@@ -8,6 +8,7 @@ const routes = {
   checkout: "/checkout",
   payment: "/payment",
   success: "/success",
+  contact: "/contact",
 };
 
 export default routes;

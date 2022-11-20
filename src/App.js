@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoutes } from "./routes";
 import { DefaultLayout } from "./Layouts";
-import { Fragment, Suspense } from "react";
-import { lazy } from "react";
+import { Fragment } from "react";
 
 const App = () => {
   return (
