@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import styles from "./search.module.scss";
 import debounce from "lodash.debounce";
 import { searchProduct } from "../../utils/product";
+import { formatPrice } from "../../utils/auth_error_code";
 
 const SearchModal = () => {
   const navigate = useNavigate();
@@ -79,7 +80,9 @@ const SearchModal = () => {
                   </div>
                   <div onClick={() => handleNavigate(product.id)}>
                     <span className={styles.name}>{product.name}</span>
-                    <p className={styles.price}>${product.price}</p>
+                    <p className={styles.price}>
+                      {formatPrice.format(product.price)}
+                    </p>
                   </div>
                 </div>
               ))}
