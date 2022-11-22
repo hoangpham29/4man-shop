@@ -8,6 +8,7 @@ import styles from "./Items.module.scss";
 import cartsSlice from "../../redux/cartsSlice/cartsSlice";
 import Skeleton from "@mui/material/Skeleton";
 import toastr from "toastr";
+import { formatPrice } from "../../utils/auth_error_code";
 
 const Item = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Item = () => {
 
   useEffect(() => {
     request
-      .get("/hotclothes")
+      .get("/products")
       .then((res) => {
         setItems(res.data);
         setIsLoading(false);
@@ -71,7 +72,9 @@ const Item = () => {
                 >
                   {item.name}{" "}
                 </Link>
-                <div className={styles.cost_product}>{item.cost} </div>
+                <div className={styles.cost_product}>
+                  {formatPrice.format(item.price)}
+                </div>
               </div>
             </div>
           ))}

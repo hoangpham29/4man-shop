@@ -4,6 +4,20 @@
   width: 100% !important;
   display: flex;
   justify-content: center;
+  .btnIcon {
+    background-color: #ededed;
+    color: #a04242;
+    border-radius: 5px;
+    margin: 0px 0px 0px 5px;
+    width: 32px;
+    height: 32px;
+    .icon {
+      font-size: 13px;
+    }
+  }
+  .btnIcon:hover {
+    border: #a04242 solid 1px;
+  }
 }
 
 .navbar {
@@ -25,25 +39,16 @@
   }
 }
 
-.navIcon {
-  position: relative;
-
-  .btnIcon {
-    background-color: #ededed;
-    color: #a04242;
-    border-radius: 5px;
-    margin: 0px 0px 0px 5px;
-    width: 32px;
-    height: 32px;
-  }
-}
-
-.header .navIcon .btnIcon .icon {
-  font-size: 13px;
-}
-
-.header .navIcon .btnIcon:hover {
-  border: #a04242 solid 1px;
+.box_modal {
+  position: absolute;
+  margin: auto;
+  top: "30%";
+  left: "50%";
+  width: 500px;
+  background-color: #fff;
+  border: "1px solid #000";
+  box-shadow: 24;
+  padding: 50px 100px;
 }
 
 @media (min-width: 1300px) {

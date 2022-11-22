@@ -9,6 +9,8 @@ const routes = {
   payment: "/payment",
   success: "/success",
   contact: "/contact",
+  category: "/category",
+  detailCategory: "/category/:id",
 };
 
 export default routes;

@@ -13,7 +13,10 @@ const Cart = () => {
 
   const { carts } = useSelector(({ carts }) => carts);
 
-  const total = carts.reduce((sum, item) => sum + item.cost * item.quantity, 0);
+  const total = carts.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   const hanldeDeleteCart = (id) =>
     dispatch(cartsSlice.actions.deleteCart({ id }));
@@ -75,10 +78,10 @@ const Cart = () => {
                     </button>
                   </div>
                 </td>
-                <td>{formatPrice.format(cart.cost)}</td>
+                <td>{formatPrice.format(cart.price)}</td>
                 <td>
                   <p className={styles.sub_total}>
-                    {formatPrice.format(cart.quantity * cart.cost)}
+                    {formatPrice.format(cart.quantity * cart.price)}
                   </p>
                 </td>
                 <td>

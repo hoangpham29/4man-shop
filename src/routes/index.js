@@ -10,6 +10,7 @@ import Payment from "../stripe/Payment";
 import Checkout from "../pages/Checkout";
 import Success from "../pages/Success";
 import Contact from "../pages/Contact";
+import Category from "../pages/Category";
 
 const publicRoutes = [
   { path: routesConfig.home, component: Home },
@@ -21,7 +22,8 @@ const publicRoutes = [
   { path: routesConfig.payment, component: Payment },
   { path: routesConfig.checkout, component: Checkout },
   { path: routesConfig.success, component: Success },
-  { path: routesConfig.contact, component: Contact }, 
+  { path: routesConfig.contact, component: Contact },
+  { path: routesConfig.detailCategory, component: Category },
 ];
 
 //private routes

@@ -2,48 +2,48 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import request from "../../utils/request";
 import routesConfig from "../../config/routes";
 import { useDispatch } from "react-redux";
-import styles from "./products.module.scss";
+import styles from "./category.module.scss";
 import cartsSlice from "../../redux/cartsSlice/cartsSlice";
 import Skeleton from "@mui/material/Skeleton";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import toastr from "toastr";
-import { read as readCategory } from "../../utils/category";
+import { read, getOne as show } from "../../utils/category";
 import { formatPrice } from "../../utils/auth_error_code";
 
-const Products = () => {
+const Category = () => {
+  const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //state
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [category, setCategory] = useState();
   const [categories, setCategories] = useState([]);
 
   const limitedProduct = 12;
 
   const count = Math.ceil(items.length / limitedProduct);
 
-  const getCategory = async () => {
-    const { data } = await readCategory();
+  useEffect(() => {
+    getListCategories();
+    getCategory(id);
+  }, [id]);
+
+  const getListCategories = async () => {
+    const { data } = await read();
     setCategories(data);
   };
 
-  useEffect(() => {
-    getCategory();
-  }, []);
-
-  useEffect(() => {
-    request
-      .get("/products")
-      .then((res) => {
-        setItems(res.data);
-        setIsLoading(false);
-      })
-      .catch((err) => {});
-  }, []);
+  const getCategory = async (id) => {
+    const { data } = await show(id);
+    setCategory(data);
+    setItems(data.products);
+    setIsLoading(false);
+  };
 
   const indexOfLastProduct = currentPage * limitedProduct;
   const indexOfFirstProduct = indexOfLastProduct - limitedProduct;
@@ -59,9 +59,9 @@ const Products = () => {
     setCurrentPage(value);
   };
 
-  return (
+  return category ? (
     <div>
-      <div className={styles.text}>PRODUCTS</div>
+      <div className={styles.text}>PRODUCTS | {category.name}</div>
       <div className={styles.wrapper_sidebar_content}>
         <div className={styles.sidebar}>
           <div className={styles.title_category}>Category</div>
@@ -75,9 +75,8 @@ const Products = () => {
             ))}
           </ul>
         </div>
-
         {isLoading ? (
-          <Skeleton sx={{ minHeight: 700, minWidth: 1000 }} />
+          <Skeleton sx={{ minHeight: 700 }} />
         ) : (
           <div className={styles.wrap_content}>
             <div className={styles.wrapper}>
@@ -118,7 +117,7 @@ const Products = () => {
                 </div>
               ))}
             </div>
-
+  
             <Stack className={styles.pagination} spacing={2}>
               <Pagination
                 count={count || 10}
@@ -130,7 +129,7 @@ const Products = () => {
         )}
       </div>
     </div>
-  );
+  ) : null;
 };
 
-export default Products;
+export default Category;

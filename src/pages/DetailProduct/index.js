@@ -11,6 +11,7 @@ import styles from "./DetailProduct.module.scss";
 import toastr from "toastr";
 import { useDispatch } from "react-redux";
 import CartSlice from "../../redux/cartsSlice/cartsSlice";
+import { formatPrice } from "../../utils/auth_error_code";
 
 const Btn = ({ children, onClick }) => (
   <button className={styles.btn_style} onClick={onClick}>
@@ -42,7 +43,7 @@ const DetailProduct = () => {
   };
 
   const getProduct = async (id) => {
-    const { data } = await request.get("/hotclothes/" + id);
+    const { data } = await request.get("/products/" + id);
     setItem(data);
   };
 
@@ -82,7 +83,7 @@ const DetailProduct = () => {
           </div>
           <div className={styles.cost_product}>
             <span className={styles.text_cost}>Giá bán: </span>
-            {item.cost} <span>₫</span>
+            {formatPrice.format(item.price)}
           </div>
           <div className={styles.option_product}>
             <div className={styles.option_size}>

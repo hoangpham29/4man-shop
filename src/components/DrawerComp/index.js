@@ -32,17 +32,36 @@ const DrawerComp = () => {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
       >
-        <Link to={routesConfig.products} onClick={() => setOpenDrawer(false)}>
-          <List>
-            {PAGES.map((page, index) => (
-              <ListItemButton key={index}>
-                <ListItemIcon>
-                  <ListItemText>{page}</ListItemText>
-                </ListItemIcon>
-              </ListItemButton>
-            ))}
-          </List>
-        </Link>
+        <List>
+          <Link to={routesConfig.home} onClick={() => setOpenDrawer(false)}>
+            <ListItemButton>
+              <ListItemIcon>
+                <ListItemText>HOME</ListItemText>
+              </ListItemIcon>
+            </ListItemButton>
+          </Link>
+          <Link to={routesConfig.products} onClick={() => setOpenDrawer(false)}>
+            <ListItemButton>
+              <ListItemIcon>
+                <ListItemText>PRODUCTS</ListItemText>
+              </ListItemIcon>
+            </ListItemButton>
+          </Link>
+          <Link to={routesConfig.home} onClick={() => setOpenDrawer(false)}>
+            <ListItemButton>
+              <ListItemIcon>
+                <ListItemText>BLOG</ListItemText>
+              </ListItemIcon>
+            </ListItemButton>
+          </Link>
+          <Link to={routesConfig.contact} onClick={() => setOpenDrawer(false)}>
+            <ListItemButton>
+              <ListItemIcon>
+                <ListItemText>CONTACT</ListItemText>
+              </ListItemIcon>
+            </ListItemButton>
+          </Link>
+        </List>
       </Drawer>
       <div className={styles.navIcon}>
         <IconButton

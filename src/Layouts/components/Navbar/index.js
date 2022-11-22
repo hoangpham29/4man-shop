@@ -1,17 +1,8 @@
 import * as React from "react";
-import {
-  AppBar,
-  Toolbar,
-  useMediaQuery,
-  useTheme,
-  Typography,
-} from "@mui/material";
-import Popper from "@mui/material/Popper";
+import { AppBar, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import LoginIcon from "@mui/icons-material/Login";
 import PersonIcon from "@mui/icons-material/Person";
@@ -23,36 +14,8 @@ import styles from "./Navbar.module.scss";
 import routesConfig from "../../../config/routes";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import SearchModal from "../../../components/Search";
 import usersSlice from "../../../redux/usersSlice/usersSlice";
-
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
-  },
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-}));
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -65,12 +28,7 @@ const Navbar = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
-  const anchorRef = React.useRef();
-
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [searchEl, setSearchEl] = React.useState(null);
-
-  const openPopper = (e) => setSearchEl(searchEl ? null : e.currentTarget);
 
   const handleLogout = () => dispatch(usersSlice.actions.logout());
 
@@ -116,16 +74,7 @@ const Navbar = () => {
                 <Logo />
               </Link>
               <div className={styles.icon_mb}>
-                <div className={styles.navIcon}>
-                  <IconButton
-                    className={styles.btnIcon}
-                    size="large"
-                    aria-label="search"
-                    color="secondary"
-                  >
-                    <SearchIcon className={styles.icon} />
-                  </IconButton>
-                </div>
+                <SearchModal />
 
                 <div className={styles.navIcon}>
                   <Link to={routesConfig.cart}>
@@ -195,7 +144,7 @@ const Navbar = () => {
                   </Link>
                 </li>
               </ul>
-              <div className={styles.navIcon}>
+              <div>
                 <Link to={routesConfig.cart}>
                   <Badge badgeContent={numberCart} color="error">
                     <IconButton
@@ -208,16 +157,7 @@ const Navbar = () => {
                     </IconButton>
                   </Badge>
                 </Link>
-
-                <IconButton
-                  className={styles.btnIcon}
-                  size="large"
-                  aria-label="search"
-                  color="secondary"
-                  onClick={openPopper}
-                >
-                  <SearchIcon className={styles.icon} />
-                </IconButton>
+                <SearchModal />
 
                 {user ? (
                   <IconButton
@@ -240,32 +180,6 @@ const Navbar = () => {
                     <PersonIcon className={styles.icon} />
                   </IconButton>
                 )}
-
-                <div ref={anchorRef}>
-                  {searchEl && (
-                    <Popper
-                      open={true}
-                      anchorEl={searchEl}
-                      sx={{ zIndex: "drawer" }}
-                    >
-                      <Typography
-                        component={"div"}
-                        sx={{
-                          marginTop: 1,
-                          marginRight: 25,
-                          border: 1,
-                          p: 0.5,
-                          bgcolor: "background.paper",
-                          borderRadius: 1,
-                        }}
-                      >
-                        <Search>
-                          <StyledInputBase placeholder="Search…" />
-                        </Search>
-                      </Typography>
-                    </Popper>
-                  )}
-                </div>
               </div>
             </>
           )}
