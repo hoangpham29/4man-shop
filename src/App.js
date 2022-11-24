@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoutes, privateRoutes } from "./routes";
 import { DefaultLayout, AdminLayout } from "./Layouts";
 import { Fragment } from "react";
+import PageNotFound from "./pages/PageNotFound";
+import routeconfig from "./config/routes";
 
 const App = () => {
   return (
@@ -30,8 +32,6 @@ const App = () => {
               />
             );
           })}
-        </Routes>
-        <Routes>
           {privateRoutes.map((route, index) => {
             const Page = route.component;
             let Layout = AdminLayout;
@@ -54,6 +54,7 @@ const App = () => {
               />
             );
           })}
+          <Route path={routeconfig.pageNotFound} element={<PageNotFound />} />
         </Routes>
       </div>
     </Router>
