@@ -12,7 +12,9 @@
 }
 
 .style_modal {
-  position: absolute;
+  position: fixed;
+  display: flex;
+  justify-content: center;
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -98,4 +100,22 @@
 }
 .price {
   font-weight: bold;
+}
+
+@media screen and (min-width: 420px) and (max-width: 1024px) {
+  .style_modal {
+    width: 650px;
+    .input_search {
+      width: 500px;
+    }
+  }
+}
+
+@media screen and (max-width: 419px) {
+  .style_modal {
+    width: 350px;
+    .input_search {
+      width: 340px;
+    }
+  }
 }
