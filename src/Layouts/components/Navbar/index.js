@@ -1,7 +1,6 @@
 import * as React from "react";
 import { AppBar, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge from "@mui/material/Badge";
 import LoginIcon from "@mui/icons-material/Login";

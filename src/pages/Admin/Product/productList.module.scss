@@ -1,0 +1,23 @@
+.image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: 10px auto;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.pagination {
+  margin-bottom: 20px;
+  float: right;
+  margin-right: 30px;
+  margin-top: 20px;
+  nav {
+    display: flex;
+    justify-content: center;
+    button {
+      font-size: 15px;
+    }
+  }
+}
