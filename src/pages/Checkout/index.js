@@ -96,7 +96,7 @@ const Checkout = () => {
                   </span>
                 </p>
                 <p className={styles.price_product}>
-                  {formatPrice.format(listCart.cost)}
+                  {formatPrice.format(listCart.price)}
                 </p>
               </div>
             </div>
