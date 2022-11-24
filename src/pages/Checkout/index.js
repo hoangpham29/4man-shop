@@ -20,7 +20,7 @@ const Checkout = () => {
 
   const listCarts = useSelector((state) => state.carts.carts);
   const total = listCarts.reduce(
-    (sum, item) => sum + item.cost * item.quantity,
+    (sum, item) => sum + item.price * item.quantity,
     0
   );
 
