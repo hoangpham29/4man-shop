@@ -19,6 +19,7 @@ const routes = {
   adminProductEdit: "/admin/products/:id/edit",
   adminProductAdd: "/admin/products/add",
   adminLogin: "/admin/login",
+  pageNotFound: "/*",
 };
 
 export default routes;

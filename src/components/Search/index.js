@@ -24,7 +24,7 @@ const SearchModal = () => {
     setOpen(false);
   };
   const updateKeyword = (e) => setKeyword(e.target.value);
-  const handleChangeInput = debounce(updateKeyword, 50);
+  const handleChangeInput = debounce(updateKeyword, 500);
 
   const searchProductt = async (keyword) => {
     try {

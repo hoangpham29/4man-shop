@@ -19,6 +19,7 @@ import ProductList from "../pages/Admin/Product/ProductList";
 import ProductAdd from "../pages/Admin/Product/ProductAdd";
 import ProductEdit from "../pages/Admin/Product/ProductEdit";
 import AdminLoginPage from "../pages/Admin/AdminLoginPage";
+import PageNotFound from "../pages/PageNotFound";
 
 const publicRoutes = [
   { path: routesConfig.home, component: Home },
@@ -32,6 +33,7 @@ const publicRoutes = [
   { path: routesConfig.success, component: Success },
   { path: routesConfig.contact, component: Contact },
   { path: routesConfig.detailCategory, component: Category },
+  { path: routesConfig.pageNotFound, component: PageNotFound, layout: null },
 ];
 
 //private routes
